@@ -1,0 +1,25 @@
+<div class="ingredientDetail" *ngIf ="ingredient">
+  <h2>Ingredient {{ingredient.name}} detail</h2>
+  <div class="ingredientDetailTableContainer">
+    <table>
+    <tr>
+      <td>Name</td>
+      <td>{{ingredient.name}}</td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td>{{ingredient.type}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{ingredient.description}}</td>
+    </tr>
+  </table>
+  <button>Edit</button>
+  </div>
+  <form>
+    <label for="name">Name</label>
+    <input type="text" name = "name">
+    <button>Save</button><button>Cancel</button>
+  </form>
+</div>
