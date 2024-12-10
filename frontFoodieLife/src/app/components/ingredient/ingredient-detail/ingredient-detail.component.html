@@ -15,11 +15,15 @@
       <td>{{ingredient.description}}</td>
     </tr>
   </table>
-  <button>Edit</button>
+  <button class ="editButton" (click) ="changeEditable()" *ngIf = "!edit">Edit</button>
   </div>
-  <form>
-    <label for="name">Name</label>
-    <input type="text" name = "name">
-    <button>Save</button><button>Cancel</button>
-  </form>
+  <div class="ingredientEditForm" *ngIf =" edit && ingredientToEdit">
+    <label for="ingredient-name">Name</label>
+    <input type="text" name = "ingredient-name" placeholder = {{ingredientToEdit.name}} [(ngModel)] = ingredientToEdit.name>
+    <label for="ingredient-type">Type</label>
+    <input type="number" name = "ingredient-type" placeholder = {{ingredientToEdit.type}}>
+    <label for="ingredient-description">Description</label>
+    <input type="text" name = "ingredient-description" placeholder = {{ingredientToEdit.description}}>
+    <button (click) = "saveUpdateIngredient(ingredientToEdit)">Save</button><button (click) = "changeEditable()">Cancel</button>
+  </div>
 </div>

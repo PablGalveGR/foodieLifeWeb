@@ -17,4 +17,17 @@ export class IngredientService {
     const ing = ingredients.find(i => i.id === id)!;
     return of(ing);
   }
+  saveUpdatedIngredient(ing : Ingredient){
+    for( let i = 0; i < ingredients.length; i++){
+      if(ingredients[i].id === ing.id){
+        ingredients[i] = ing;
+        break;
+      }
+    }
+    console.log("Updated ingredient: " + JSON.stringify(ing));
+    console.log("Updated ingredients list" + JSON.stringify(ingredients));
+  }
+  saveIngredient( ing : Ingredient){
+
+  }
 }
