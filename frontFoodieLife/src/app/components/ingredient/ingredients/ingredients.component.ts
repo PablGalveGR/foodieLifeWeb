@@ -19,5 +19,6 @@ export class IngredientsComponent {
  }
  getIngredients() :void{
   this.ingredientService.getIngredients().subscribe(ingredients => this.ingredients = ingredients);
+  console.log("Ingredient List: " + JSON.stringify(this.ingredients));
  }
 }

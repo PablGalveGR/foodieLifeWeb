@@ -1,29 +1,34 @@
-<div class="ingredientDetail" *ngIf ="ingredient">
+<div class="ingredientDetail" *ngIf="ingredient">
   <h2>Ingredient {{ingredient.name}} detail</h2>
   <div class="ingredientDetailTableContainer">
     <table>
-    <tr>
-      <td>Name</td>
-      <td>{{ingredient.name}}</td>
-    </tr>
-    <tr>
-      <td>Type</td>
-      <td>{{ingredient.type}}</td>
-    </tr>
-    <tr>
-      <td>Description</td>
-      <td>{{ingredient.description}}</td>
-    </tr>
-  </table>
-  <button class ="editButton" (click) ="changeEditable()" *ngIf = "!edit">Edit</button>
+      <tr>
+        <td>Name</td>
+        <td>{{ingredient.name}}</td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>{{getType(ingredient.type)}}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ingredient.description}}</td>
+      </tr>
+    </table>
+    <button class="editButton" (click)="changeEditable()" *ngIf="!edit">Edit</button>
   </div>
-  <div class="ingredientEditForm" *ngIf =" edit && ingredientToEdit">
+  <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit">
     <label for="ingredient-name">Name</label>
-    <input type="text" name = "ingredient-name" placeholder = {{ingredientToEdit.name}} [(ngModel)] = ingredientToEdit.name>
+    <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}} [(ngModel)]=ingredientToEdit.name>
     <label for="ingredient-type">Type</label>
-    <input type="number" name = "ingredient-type" placeholder = {{ingredientToEdit.type}}>
+    <select name="ingredient-type" id="">
+      <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+
+    </select>
+    <input type="number" name="ingredient-type" placeholder={{ingredientToEdit.type}}>
     <label for="ingredient-description">Description</label>
-    <input type="text" name = "ingredient-description" placeholder = {{ingredientToEdit.description}}>
-    <button (click) = "saveUpdateIngredient(ingredientToEdit)">Save</button><button (click) = "changeEditable()">Cancel</button>
+    <input type="text" name="ingredient-description" placeholder={{ingredientToEdit.description}}>
+    <button (click)="saveUpdateIngredient(ingredientToEdit)">Save</button><button
+      (click)="changeEditable()">Cancel</button>
   </div>
 </div>
