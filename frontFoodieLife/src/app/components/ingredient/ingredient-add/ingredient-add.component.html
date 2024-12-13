@@ -1,33 +1,12 @@
-<p>ingredient-add works!</p>
-<form id ="ingForm">
-  <label for="fname">Name</label>
-  <input type="text" id="fname" name="name">
-  <label for="ftype">Type</label>
-  <select id="ftype" name="type">
-    <optgroup label="Liquid">
-      <option>Oil</option>
-      <option>Dairy</option>
-      <option>Juice</option>
-      <option>Water</option>
-    </optgroup>
-    <optgroup label="Solid">
-      <option>Fruit</option>
-      <option>Vegetable</option>
-      <option>Meat</option>
-      <option>Fish</option>
-      <option>Dairy</option>
-    </optgroup>
-    <optgroup label="Seasoning">
-      <option>Salt</option>
-      <option>Sugar</option>
-      <option>Cinnamon</option>
-      <option>Black Pepper</option>
-      <option>White Pepper</option>
-      <option>Oregano</option>
-    </optgroup>
+<div class="ingredientEditForm">
+  <label for="ingredient-name">Name</label>
+  <input type="text" name="ingredient-name" [(ngModel)]=ingredient.name>
+  <label for="ingredient-type">Type</label>
+  <select name="ingredient-type" [(ngModel)] = ingredient.type>
+    <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
   </select>
-  <label for="fprice">€/kg</label>
-  <input type="number" id="fprice" name="€/Kg">
-  <button (click) = "getFromFormIngredient()" type="button">Add ingredient</button>
-
-</form>
+  <label for="ingredient-description">Description</label>
+  <input type="text" name="ingredient-description" [(ngModel)]=ingredient.description>
+  <button (click)="saveIngredient(ingredient)">Save</button><button
+    (click)="goBack">Cancel</button>
+</div>

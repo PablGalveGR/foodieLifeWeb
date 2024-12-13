@@ -5,7 +5,7 @@
         <td>Name</td>
     </tr>
     <tr *ngFor=" let ingredient of ingredients" class="ingredient">
-        <td><a href="/ingredientDetail/{{ingredient.id}}">{{ingredient.id}}</a></td>
+        <td><a href="/ingredients/ingredient/detail/{{ingredient.id}}">{{ingredient.id}}</a></td>
         <td>{{ingredient.name}}</td>
     </tr>
 </table>

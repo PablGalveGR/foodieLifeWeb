@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { IngredientDetailComponent } from '../components/ingredient/ingredient-detail/ingredient-detail.component';
 import { IngredientsComponent } from '../components/ingredient/ingredients/ingredients.component';
+import { IngredientAddComponent } from '../components/ingredient/ingredient-add/ingredient-add.component';
 
 
 export const routes: Routes = [
-  {path: '', component: IngredientsComponent},
-  {path: 'ingredientDetail/:id', component: IngredientDetailComponent}
+  {path: '', redirectTo: 'ingredients', pathMatch: 'full'},
+  {path:'ingredients', component:IngredientsComponent},
+  {path: 'ingredients/ingredient/detail/:id', component: IngredientDetailComponent},
+  {path: 'ingredients/ingredient/add', component: IngredientAddComponent}
 ];
 @NgModule({
   declarations: [],
