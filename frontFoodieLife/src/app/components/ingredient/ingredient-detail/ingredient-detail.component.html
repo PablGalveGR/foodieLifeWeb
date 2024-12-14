@@ -17,13 +17,12 @@
     </table>
     <button class="editButton" (click)="changeEditable()" *ngIf="!edit">Edit</button>
   </div>
-  <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit">
+  <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit ">
     <label for="ingredient-name">Name</label>
     <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}} [(ngModel)]=ingredientToEdit.name>
     <label for="ingredient-type">Type</label>
     <select name="ingredient-type" id="">
       <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
-
     </select>
     <input type="number" name="ingredient-type" placeholder={{ingredientToEdit.type}}>
     <label for="ingredient-description">Description</label>

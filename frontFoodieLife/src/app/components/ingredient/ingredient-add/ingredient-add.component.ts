@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Ingredient } from '../Ingredient';
 import { Location } from '@angular/common';
-import { ingredients } from '../ingredients';
 import { FormsModule } from '@angular/forms';
 import { Type } from '../Type';
 import { TypeService } from '../../../services/type/type.service';
 import { NgFor } from '@angular/common';
+import { IngredientService } from '../../../services/ingredient/ingredient.service';
 
 @Component({
   selector: 'app-ingredient-add',
@@ -15,7 +15,11 @@ import { NgFor } from '@angular/common';
   styleUrl: './ingredient-add.component.scss'
 })
 export class IngredientAddComponent {
-  constructor(private location: Location, private typeService : TypeService) { }
+  constructor(private location: Location,
+    private typeService: TypeService,
+    private ingredientService: IngredientService) { 
+      console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
+    }
 
   ingredient: Ingredient = {
     id: 0,
@@ -25,16 +29,21 @@ export class IngredientAddComponent {
     description: ''
   };
   types?: Type[];
-  ngOnInit(){
+  ngOnInit() {
     this.typeService.getTypes().subscribe(t => this.types = t);
   }
 
   saveIngredient(ingredient: Ingredient): void {
     if (ingredient != undefined) {
-      const lastID = ingredients[ingredients.length - 1].id;
-      this.ingredient.id = lastID + 1;
-      ingredients.push(ingredient);
-      console.log("Ingredient added: "+ JSON.stringify(ingredients));
+      let ings: Ingredient[] = [];
+      this.ingredientService.getIngredients().subscribe(ingredients => ings = ingredients);
+      if (ings != undefined) {
+        const lastID: number = ings[ings.length - 1].id;
+        this.ingredient.id = lastID + 1;
+        this.ingredientService.saveIngredient(ingredient);
+        console.log("Ingredient added: " + JSON.stringify(ings));
+      }
+
     }
 
   }

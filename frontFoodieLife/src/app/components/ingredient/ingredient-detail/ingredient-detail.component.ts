@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Ingredient } from '../Ingredient';
 import { ActivatedRoute } from '@angular/router';
 import { IngredientService } from '../../../services/ingredient/ingredient.service';
@@ -16,7 +16,10 @@ import { TypeService } from '../../../services/type/type.service';
 })
 export class IngredientDetailComponent {
   constructor(private route: ActivatedRoute,
-    private ingredientService: IngredientService, private typeService: TypeService) { }
+    private ingredientService: IngredientService, 
+    private typeService: TypeService) { 
+      console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
+    }
   ingredient?: Ingredient;
   ingredientToEdit?: Ingredient;
   edit?: boolean;
@@ -42,5 +45,8 @@ export class IngredientDetailComponent {
   getType(id: number) {
     let t = this.types?.find(type => type.id === id)!.name;
     return t;
+  }
+  ngOnDestroy(){
+    console.log("Detail Killed");
   }
 }

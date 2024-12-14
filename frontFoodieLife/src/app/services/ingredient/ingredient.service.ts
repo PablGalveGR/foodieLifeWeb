@@ -8,19 +8,21 @@ import { Observable, of } from 'rxjs';
 })
 export class IngredientService {
 
-  constructor() { }
+  constructor() {
+    
+   }
+  ingredients : Ingredient[]  = ingredients;
   getIngredients() : Observable<Ingredient[]>{
-    const ings : Observable<Ingredient[]> = of(ingredients);
-    return ings;
+    return of(this.ingredients);
   }
   getIngredient(id : number) : Observable<Ingredient>{
-    const ing = ingredients.find(i => i.id === id)!;
-    return of(ing);
+    const ing = of(this.ingredients.find(i => i.id === id)!);
+    return ing;
   }
   saveUpdatedIngredient(ing : Ingredient){
-    for( let i = 0; i < ingredients.length; i++){
-      if(ingredients[i].id === ing.id){
-        ingredients[i] = ing;
+    for( let i = 0; i < this.ingredients.length; i++){
+      if(this.ingredients[i].id === ing.id){
+        this.ingredients[i] = ing;
         break;
       }
     }
@@ -28,6 +30,6 @@ export class IngredientService {
     console.log("Updated ingredients list" + JSON.stringify(ingredients));
   }
   saveIngredient( ing : Ingredient){
-
+    ingredients.push(ing);
   }
 }

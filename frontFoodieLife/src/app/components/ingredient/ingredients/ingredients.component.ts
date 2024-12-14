@@ -12,13 +12,15 @@ import { NgFor } from '@angular/common';
   styleUrl: './ingredients.component.css'
 })
 export class IngredientsComponent {
-  constructor(private ingredientService : IngredientService){}
- ingredients : Ingredient[] = [];
- ngOnInit(){
-  this.getIngredients();
- }
- getIngredients() :void{
-  this.ingredientService.getIngredients().subscribe(ingredients => this.ingredients = ingredients);
-  console.log("Ingredient List: " + JSON.stringify(this.ingredients));
- }
+  constructor(private ingredientService: IngredientService) { 
+    console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
+  }
+  ingredients: Ingredient[] = [];
+  ngOnInit() {
+    this.getIngredients();
+  }
+  getIngredients(): void {
+    this.ingredientService.getIngredients().subscribe(ingredients => this.ingredients = ingredients);
+    console.log("Ingredient List: " + JSON.stringify(this.ingredients));
+  }
 }
