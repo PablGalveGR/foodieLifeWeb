@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Ingredient } from '../Ingredient';
 import { IngredientService } from '../../../services/ingredient/ingredient.service';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ingredients',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, RouterLink],
   templateUrl: './ingredients.component.html',
   styleUrl: './ingredients.component.css'
 })

@@ -8,10 +8,11 @@ import { Observable, of } from 'rxjs';
 })
 export class IngredientService {
 
-  constructor() {
-    
-   }
+  constructor() {   }
   ingredients : Ingredient[]  = ingredients;
+  ngOnInit(){
+    console.log("Service Ingredient Created");
+  }
   getIngredients() : Observable<Ingredient[]>{
     return of(this.ingredients);
   }
@@ -31,5 +32,8 @@ export class IngredientService {
   }
   saveIngredient( ing : Ingredient){
     ingredients.push(ing);
+  }
+  ngOnDestroy(){
+    console.log("Service Ingredients Killed");
   }
 }

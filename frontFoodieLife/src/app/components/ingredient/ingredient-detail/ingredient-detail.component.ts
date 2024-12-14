@@ -43,8 +43,8 @@ export class IngredientDetailComponent {
     this.ingredientService.saveUpdatedIngredient(ing);
   }
   getType(id: number) {
-    let t = this.types?.find(type => type.id === id)!.name;
-    return t;
+    let t : Type = this.types?.find(type => type.id == id)!;
+    return t.name;
   }
   ngOnDestroy(){
     console.log("Detail Killed");

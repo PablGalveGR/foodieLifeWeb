@@ -6,7 +6,7 @@ import { IngredientAddComponent } from '../components/ingredient/ingredient-add/
 
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'ingredients', pathMatch: 'full'},
+  {path: '', redirectTo: '/ingredients', pathMatch: 'full'},
   {path:'ingredients', component:IngredientsComponent},
   {path: 'ingredients/ingredient/detail/:id', component: IngredientDetailComponent},
   {path: 'ingredients/ingredient/add', component: IngredientAddComponent}
