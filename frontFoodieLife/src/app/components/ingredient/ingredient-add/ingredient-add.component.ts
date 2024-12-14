@@ -26,7 +26,9 @@ export class IngredientAddComponent {
     name: '',
     type: 0,
     price: 0,
-    description: ''
+    description: '',
+    vegetarian: false,
+    vegan: false
   };
   types?: Type[];
   ngOnInit() {

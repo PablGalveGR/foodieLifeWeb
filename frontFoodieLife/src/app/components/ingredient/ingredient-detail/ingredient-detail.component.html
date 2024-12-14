@@ -14,6 +14,14 @@
         <td>Description</td>
         <td>{{ingredient.description}}</td>
       </tr>
+      <tr>
+        <td>Vegetarian</td>
+        <td>{{ingredient.vegetarian}}</td>
+      </tr>
+      <tr>
+        <td>Vegan</td>
+        <td>{{ingredient.vegan}}</td>
+      </tr>
     </table>
     <button class="editButton" (click)="changeEditable()" *ngIf="!edit">Edit</button>
   </div>
@@ -21,11 +29,16 @@
     <label for="ingredient-name">Name</label>
     <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}} [(ngModel)]=ingredientToEdit.name>
     <label for="ingredient-type">Type</label>
-    <select name="ingredient-type" id="" [(ngModel)] = ingredientToEdit.type>
+    <select name="ingredient-type" id="" [(ngModel)]=ingredientToEdit.type>
       <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
     </select>
     <label for="ingredient-description">Description</label>
-    <input type="text" name="ingredient-description" placeholder={{ingredientToEdit.description}} [(ngModel)]=ingredientToEdit.description>
+    <input type="text" name="ingredient-description" placeholder={{ingredientToEdit.description}}
+      [(ngModel)]=ingredientToEdit.description>
+    <label for="ingredient-vegetarian">Vegetarian</label>
+    <input name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredientToEdit.vegetarian>
+    <label for="ingredient-vegan">Vegan</label>
+    <input name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
     <button (click)="saveUpdateIngredient(ingredientToEdit)">Save</button><button
       (click)="changeEditable()">Cancel</button>
   </div>

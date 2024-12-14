@@ -31,7 +31,12 @@ export class IngredientService {
     console.log("Updated ingredients list" + JSON.stringify(ingredients));
   }
   saveIngredient( ing : Ingredient){
-    ingredients.push(ing);
+    this.ingredients.push(ing);
+  }
+  deleteIngredient( id:number){
+    let index : number = this.ingredients.findIndex( i => i.id == id);
+    console.log("Deleted ingredient: "+ JSON.stringify(this.ingredients[index]));
+    this.ingredients.splice(index, 1);
   }
   ngOnDestroy(){
     console.log("Service Ingredients Killed");

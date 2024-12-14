@@ -7,6 +7,10 @@
   </select>
   <label for="ingredient-description">Description</label>
   <input type="text" name="ingredient-description" [(ngModel)]=ingredient.description>
+  <label for="ingredient-vegetarian">Vegetarian</label>
+  <input name ="ingredient-vegan" type="checkbox" [(ngModel)] = ingredient.vegetarian>
+  <label for="ingredient-vegan">Vegan</label>
+  <input name ="ingredient-vegan" type="checkbox" [(ngModel)] = ingredient.vegan>
   <button (click)="saveIngredient(ingredient)">Save</button>
   <button (click)="goBack()">Cancel</button>
 </div>

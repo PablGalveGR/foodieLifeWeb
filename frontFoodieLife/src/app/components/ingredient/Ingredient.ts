@@ -3,5 +3,7 @@ export interface Ingredient{
     name : string,
     type : number,
     price : number,
-    description : string
+    description : string,
+    vegetarian : boolean,
+    vegan : boolean
 }

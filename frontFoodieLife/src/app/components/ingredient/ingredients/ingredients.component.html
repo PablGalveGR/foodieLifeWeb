@@ -3,9 +3,17 @@
     <tr>
         <td>ID</td>
         <td>Name</td>
+        <td>Type</td>
+        <td>Vegetarian</td>
+        <td>Vegan</td>
+        <td>Delete</td>
     </tr>
     <tr *ngFor=" let ingredient of ingredients" class="ingredient">
         <td><a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">{{ingredient.id}}</a></td>
         <td>{{ingredient.name}}</td>
+        <td>{{getType(ingredient.type)}}</td>
+        <td>{{ingredient.vegetarian}}</td>
+        <td>{{ingredient.vegan}}</td>
+        <td><button (click)=deleteIngredient(ingredient.id)>Delete</button></td>
     </tr>
 </table>
