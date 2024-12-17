@@ -1,1 +1,42 @@
-<p>recipe-detail works!</p>
+<div class="recipeContainer" *ngIf=" recipe != undefined && !edit">
+    <h2>Detail Recipe {{recipe.name}}</h2>
+    <!--Ingredients-->
+    <div class="ingredientsContainer" *ngIf="ingredients != undefined">
+        <h3>Ingredients</h3>
+        <ul *ngFor="let ingredient of ingredients">
+            <li>
+                <a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">
+                    {{ingredient.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="stepsContainer">
+        <h3>Steps</h3>
+        <div class="stepsContainer" *ngFor="let step of recipe.steps">
+            <h4>{{step.title}}</h4>
+            <p>{{step.body}}</p>
+        </div>
+    </div>
+</div>
+<div class="recipeEditContainer" *ngIf="edit">
+    <h2>Detail Recipe {{recipe.name}}</h2>
+    <!--Ingredients-->
+    <div class="ingredientsContainer" *ngIf="ingredients != undefined">
+        <h3>Ingredients</h3>
+        <ul *ngFor="let ingredient of ingredients">
+            <li>
+                <a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">
+                    {{ingredient.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="stepsContainer">
+        <h3>Steps</h3>
+        <div class="stepsContainer" *ngFor="let step of recipe.steps">
+            <h4>{{step.title}}</h4>
+            <p>{{step.body}}</p>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@
             <td>Name</td>
         </tr>
         <tr *ngFor = "let recipe of recipes">
-            <td><a routerLink ="recipes/recipe/detail/{{recipe.id}}">{{recipe.id}}</a></td>
+            <td><a routerLink ="/recipes/recipe/detail/{{recipe.id}}">{{recipe.id}}</a></td>
             <td>{{recipe.name}}</td>
         </tr>
     </table>

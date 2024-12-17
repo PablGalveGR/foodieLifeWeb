@@ -13,5 +13,7 @@ export class RecipeService {
   getRecipes () : Observable<Recipe[]>{
     return of(this.recipes);
   }
-  getRecipe(id:number){}
+  getRecipe(id:number) : Observable<Recipe>{
+    return of(recipes.find(r => r.id == id)!);
+  }
 }
