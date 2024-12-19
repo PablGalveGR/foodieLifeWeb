@@ -28,7 +28,8 @@ export class IngredientAddComponent {
     price: 0,
     description: '',
     vegetarian: false,
-    vegan: false
+    vegan: false,
+    measure: ''
   };
   types?: Type[];
   ngOnInit() {

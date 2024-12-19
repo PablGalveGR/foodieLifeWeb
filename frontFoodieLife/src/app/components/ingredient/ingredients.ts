@@ -5,41 +5,47 @@ export let ingredients : Ingredient [] = [
         price: 2,
         description: "Test1",
         vegetarian: false,
-        vegan:false
+        vegan:false,
+        measure : "kg"
     },
     {
         id: 1, name: "Potato", type: 0,
         price: 0,
         description: "Test2",
         vegetarian: true,
-        vegan:true
+        vegan:true,
+        measure : "Kg"
     },
     {
         id: 2, name: "Carrot", type: 0,
         price: 0,
         description: "Test3",
         vegetarian: true,
-        vegan:true
+        vegan:true,
+        measure : "Kg"
     },
     {
         id:3, name: "Onion", type:0,
         price : 0,
         description: "Onion",
         vegetarian: true,
-        vegan:true
+        vegan:true,
+        measure : "Kg"
     },
     {
         id:4, name: "Turnip", type:0,
         price : 0,
         description: "Turnip",
         vegetarian: true,
-        vegan:true
+        vegan:true,
+        measure : "Kg"
     },
     {
         id:5, name: "Apple", type:1,
         price : 0,
         description: "Apple",
         vegetarian: true,
-        vegan:true
+        vegan:true,
+        measure : "Kg"
     }
 ]

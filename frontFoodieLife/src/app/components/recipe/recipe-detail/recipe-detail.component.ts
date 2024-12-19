@@ -7,6 +7,7 @@ import { Recipe } from '../Recipe';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ReturnStatement } from '@angular/compiler';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -25,7 +26,8 @@ export class RecipeDetailComponent {
     id: 0,
     name: '',
     ingredients: [],
-    steps: []
+    steps: [],
+    ingredientQuantity: []
   };
   edit = false;
   ingredients: Ingredient[] = [];
@@ -52,6 +54,11 @@ export class RecipeDetailComponent {
       this.ingredientService.getIngredient(id).subscribe(i => this.ingredients?.push(i));
       console.log("Ingredient fetched: " + JSON.stringify(this.ingredients[id]));
     }
+  }
+  getRecipeIngredientQuantity(id : number) : number{
+    let quantity = 0;
+    quantity = this.recipe.ingredientQuantity.find( i => i.idIngredient == id)!.quantity;
+    return quantity;
   }
   changeEdit(){
     this.edit = !this.edit;

@@ -5,5 +5,6 @@ export interface Ingredient{
     price : number,
     description : string,
     vegetarian : boolean,
-    vegan : boolean
+    vegan : boolean,
+    measure : string
 }
