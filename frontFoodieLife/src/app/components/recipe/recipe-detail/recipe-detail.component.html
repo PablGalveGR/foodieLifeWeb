@@ -18,25 +18,43 @@
             <p>{{step.body}}</p>
         </div>
     </div>
+    <button (click) = "changeEdit()">Edit</button>
 </div>
 <div class="recipeEditContainer" *ngIf="edit">
-    <h2>Detail Recipe {{recipe.name}}</h2>
+    <h2>Edit Recipe {{recipeToEdit.name}}</h2>
+    <label for="recipeName">Name:</label>
+    <input type="text" name="recipeName" [(ngModel)] = "recipeToEdit.name">
     <!--Ingredients-->
     <div class="ingredientsContainer" *ngIf="ingredients != undefined">
         <h3>Ingredients</h3>
-        <ul *ngFor="let ingredient of ingredients">
-            <li>
-                <a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">
-                    {{ingredient.name}}
-                </a><span>{{getRecipeIngredientQuantity(ingredient.id)}} {{ingredient.measure}}</span>
-            </li>
-        </ul>
+        <table class="ingredients">
+            <tr>
+                <td>Add</td>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Vegetarian</td>
+                <td>Vegan</td>
+            </tr>
+            <tr *ngFor=" let ingredient of getIngredientsForRecipeEdit()" class="ingredient">
+                <td *ngIf = "recipeToEdit.ingredients.includes(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}" checked></td>
+                <td *ngIf = "!recipeToEdit.ingredients.includes(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}"></td>
+                <td>{{ingredient.name}}</td>
+                <td>{{getType(ingredient.type)}}</td>
+                <td>{{ingredient.vegetarian}}</td>
+                <td>{{ingredient.vegan}}</td>
+            </tr>
+        </table>
     </div>
     <div class="stepsContainer">
         <h3>Steps</h3>
         <div class="stepsContainer" *ngFor="let step of recipe.steps">
-            <h4>{{step.title}}</h4>
-            <p>{{step.body}}</p>
+            <label for ="steptitle">Tittle</label>
+            <input type="text" name ="stepTitle" [(ngModel)] = step.title>
+            <label for ="stepBody">Body</label>
+            <textarea name="stepBody" [(ngModel)] = step.body></textarea>
+            <button (click) = "deleteStep(step.id)">Delete</button>
         </div>
+        <button (click) = "addStepToRecipe()">Add step</button>
     </div>
+    <button (click) = "changeEdit()">Cancel</button>
 </div>
