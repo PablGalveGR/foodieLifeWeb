@@ -3,20 +3,18 @@ import { IngredientQuantity } from "./IngredientQuantity";
 export let recipes: Recipe[] = [{
     id: 0,
     name: "Test1",
-    ingredients: [1, 0, 2],
-    ingredientQuantity: [
-        {
-            idIngredient: 0,
-            quantity: 200
-        },
-        {
-            idIngredient: 1,
-            quantity: 6
-        },
-        {
-            idIngredient: 2,
-            quantity: 77
-        },
+    ingredients: [{
+        id: 0,
+        quantity: 200
+    },
+    {
+        id: 1,
+        quantity: 6
+    },
+    {
+        id: 2,
+        quantity: 77
+    },
     ],
     steps: [{
         id: 0,

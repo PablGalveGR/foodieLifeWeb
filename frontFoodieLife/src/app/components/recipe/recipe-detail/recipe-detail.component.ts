@@ -7,9 +7,9 @@ import { Recipe } from '../Recipe';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ReturnStatement } from '@angular/compiler';
 import { Step } from '../Step';
 import { FormsModule } from '@angular/forms';
+import { IngredientQuantity } from '../IngredientQuantity';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -28,22 +28,19 @@ export class RecipeDetailComponent {
     id: 0,
     name: '',
     ingredients: [],
-    steps: [],
-    ingredientQuantity: []
+    steps: []
   };
-  ingredients: Ingredient[] = [];
   recipeToEdit: Recipe = {
     id: 0,
     name: '',
     ingredients: [],
-    steps: [],
-    ingredientQuantity: []
-  }; 
+    steps: []
+  };
+  ingredients: Ingredient[] = [];
   edit = false;
 
   ngOnInit() {
     this.getRecipe();
-    this.recipeToEdit = this.recipe;
   }
   getRecipe() {
     let id = Number(this.route.snapshot.paramMap.get('id'))!;
@@ -60,15 +57,15 @@ export class RecipeDetailComponent {
     );
     this.getRecipeIngredients(this.recipe.ingredients);
   }
-  getRecipeIngredients(ing: number[]) {
-    for (let id of ing) {
-      this.ingredientService.getIngredient(id).subscribe(i => this.ingredients?.push(i));
-      console.log("Ingredient fetched: " + JSON.stringify(this.ingredients[id]));
+  getRecipeIngredients(ings: IngredientQuantity[]) {
+    for (let ing of ings) {
+      this.ingredientService.getIngredient(ing.id).subscribe(i => this.ingredients?.push(i));
+      console.log("Ingredient fetched: " + JSON.stringify(this.ingredients[ing.id]));
     }
   }
   getRecipeIngredientQuantity(id: number): number {
     let quantity = 0;
-    quantity = this.recipe.ingredientQuantity.find(i => i.idIngredient == id)!.quantity;
+    quantity = this.recipe.ingredients.find(i => i.id == id)!.quantity;
     return quantity;
   }
   getIngredientsForRecipeEdit(): Ingredient[] {
@@ -80,6 +77,10 @@ export class RecipeDetailComponent {
     let string = "";
     this.typeService.getType(id).subscribe(t => string = t.name);
     return string;
+  }
+  checkIngredient(id: number): boolean {
+    let ing = this.recipeToEdit.ingredients.find(i => i.id == id);
+    return ing == undefined;
   }
   addStepToRecipe() {
     let newStep: Step = {
@@ -104,16 +105,15 @@ export class RecipeDetailComponent {
   }
   changeEdit() {
     this.edit = !this.edit;
-    if(this.edit){
+    if (this.edit) {
       this.recipeToEdit = Object.assign({}, this.recipe);
     }
-    else{
+    else {
       this.recipeToEdit = {
         id: 0,
         name: '',
         ingredients: [],
-        steps: [],
-        ingredientQuantity: []
+        steps: []
       };
     }
   }

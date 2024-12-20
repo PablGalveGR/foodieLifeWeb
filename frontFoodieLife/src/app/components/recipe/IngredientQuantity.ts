@@ -1,4 +1,4 @@
 export interface IngredientQuantity{
-    idIngredient : number,
+    id : number,
     quantity : number,
 }

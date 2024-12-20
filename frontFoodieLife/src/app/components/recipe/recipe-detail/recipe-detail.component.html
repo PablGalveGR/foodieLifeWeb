@@ -34,14 +34,19 @@
                 <td>Type</td>
                 <td>Vegetarian</td>
                 <td>Vegan</td>
+                <td>Quantity</td>
             </tr>
             <tr *ngFor=" let ingredient of getIngredientsForRecipeEdit()" class="ingredient">
-                <td *ngIf = "recipeToEdit.ingredients.includes(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}" checked></td>
-                <td *ngIf = "!recipeToEdit.ingredients.includes(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}"></td>
+                <td *ngIf = "!checkIngredient(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}" checked></td>
+                <td *ngIf = "checkIngredient(ingredient.id)"><input type="checkbox" value ="{{ingredient.id}}"></td>
                 <td>{{ingredient.name}}</td>
                 <td>{{getType(ingredient.type)}}</td>
                 <td>{{ingredient.vegetarian}}</td>
                 <td>{{ingredient.vegan}}</td>
+                <td *ngIf = "!checkIngredient(ingredient.id)">
+                    <input type="number" value="{{getRecipeIngredientQuantity(ingredient.id)}}"> 
+                    <span> {{ingredient.measure}}</span></td>
+                <td *ngIf = "checkIngredient(ingredient.id)"><input type="number"><span> {{ingredient.measure}}</span></td>
             </tr>
         </table>
     </div>

@@ -4,7 +4,6 @@ import { Step } from "./Step";
 export interface Recipe{
     id: number,
     name: string,
-    ingredients : number[],
-    ingredientQuantity: IngredientQuantity[],
+    ingredients : IngredientQuantity[],
     steps: Step[]
 }
