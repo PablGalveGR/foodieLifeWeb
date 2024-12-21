@@ -34,7 +34,7 @@ export class IngredientDetailComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.ingredientService.getIngredient(id).subscribe(ingr => this.ingredient = ingr);
   }
-  changeEditable(): void {
+  changeEdit(): void {
     this.edit = !this.edit;
     if(this.edit){
       this.ingredientToEdit = Object.assign({}, this.ingredient);
@@ -48,6 +48,7 @@ export class IngredientDetailComponent {
     //this.ingredient = Object.assign({}, this.ingredientToEdit);
     this.ingredientService.saveUpdatedIngredient(ing);
     this.ingredientService.getIngredient(ing.id).subscribe(ingr => this.ingredient = ingr);
+    this.changeEdit();
   }
   getType(id: number) {
     let t : Type = this.types?.find(type => type.id == id)!;

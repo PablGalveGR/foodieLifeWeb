@@ -36,7 +36,8 @@ export class RecipeDetailComponent {
     ingredients: [],
     steps: []
   };
-  ingredients: Ingredient[] = [];
+  ingredientsRecipe: Ingredient[] = [];
+  ingredientsFiltered : Ingredient[] = [];
   edit = false;
 
   ngOnInit() {
@@ -59,8 +60,8 @@ export class RecipeDetailComponent {
   }
   getRecipeIngredients(ings: IngredientQuantity[]) {
     for (let ing of ings) {
-      this.ingredientService.getIngredient(ing.id).subscribe(i => this.ingredients?.push(i));
-      console.log("Ingredient fetched: " + JSON.stringify(this.ingredients[ing.id]));
+      this.ingredientService.getIngredient(ing.id).subscribe(i => this.ingredientsRecipe?.push(i));
+      console.log("Ingredient fetched: " + JSON.stringify(this.ingredientsRecipe[ing.id]));
     }
   }
   getRecipeIngredientQuantity(id: number): number {
@@ -78,9 +79,28 @@ export class RecipeDetailComponent {
     this.typeService.getType(id).subscribe(t => string = t.name);
     return string;
   }
-  checkIngredient(id: number): boolean {
-    let ing = this.recipeToEdit.ingredients.find(i => i.id == id);
-    return ing == undefined;
+  filterBy(text : string){
+    this.clearFilter();
+    this.ingredientsFiltered = this.ingredientsFiltered.filter(i => i.name.toLowerCase().includes(text.toLowerCase()));
+    console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered) );
+
+  }
+  clearFilter(){
+    let allIngs : Ingredient[] = [];
+    this.ingredientService.getIngredients().subscribe( ings => allIngs = ings);
+    this.ingredientsFiltered  = JSON.parse(JSON.stringify(allIngs));
+    for(let i of this.ingredientsRecipe){
+      let index = this.ingredientsFiltered.findIndex(ing => ing.id == i.id);
+      if(index != undefined){
+        this.ingredientsFiltered.splice(index, 1);
+        console.log("Already added: ID: " + i.id + " Name: "+ i.name); 
+      }
+    }
+  }
+  addIngredient(id :number, quantity : string){
+    let newIng : IngredientQuantity = {id: id, quantity: Number(quantity)};
+    this.recipeToEdit.ingredients.push(newIng!);
+    this.getRecipeIngredients(this.recipeToEdit.ingredients);
   }
   addStepToRecipe() {
     let newStep: Step = {
@@ -107,6 +127,7 @@ export class RecipeDetailComponent {
     this.edit = !this.edit;
     if (this.edit) {
       this.recipeToEdit = Object.assign({}, this.recipe);
+      this.clearFilter();
     }
     else {
       this.recipeToEdit = {

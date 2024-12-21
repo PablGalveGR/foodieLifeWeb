@@ -1,4 +1,7 @@
 <h2>List of ingredients</h2>
+<input type="text" (keyup.enter)="filterBy(filter.value)" #filter>
+<button (click) = "filterBy(filter.value)">Search</button>
+<button (click) = "clearFilter()">Clear</button>
 <table class="ingredients">
     <tr>
         <td>ID</td>
@@ -8,7 +11,7 @@
         <td>Vegan</td>
         <td>Delete</td>
     </tr>
-    <tr *ngFor=" let ingredient of ingredients" class="ingredient">
+    <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
         <td><a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">{{ingredient.id}}</a></td>
         <td>{{ingredient.name}}</td>
         <td>{{getType(ingredient.type)}}</td>

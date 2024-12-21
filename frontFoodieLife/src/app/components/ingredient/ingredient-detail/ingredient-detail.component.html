@@ -23,7 +23,7 @@
         <td>{{ingredient.vegan}}</td>
       </tr>
     </table>
-    <button class="editButton" (click)="changeEditable()" *ngIf="!edit">Edit</button>
+    <button class="editButton" (click)="changeEdit()" *ngIf="!edit">Edit</button>
   </div>
   <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit ">
     <label for="ingredient-name">Name</label>
@@ -40,6 +40,6 @@
     <label for="ingredient-vegan">Vegan</label>
     <input name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
     <button (click)="saveUpdateIngredient(ingredientToEdit)">Save</button><button
-      (click)="changeEditable()">Cancel</button>
+      (click)="changeEdit()">Cancel</button>
   </div>
 </div>
