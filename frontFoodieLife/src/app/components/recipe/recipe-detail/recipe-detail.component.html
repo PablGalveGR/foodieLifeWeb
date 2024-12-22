@@ -34,6 +34,7 @@
                 <td>Vegetarian</td>
                 <td>Vegan</td>
                 <td>Quantity</td>
+                <td>Delete</td>
             </tr>
             <tr *ngFor=" let ingredient of ingredientsRecipe" class="ingredient">
                 <td>{{ingredient.name}}</td>
@@ -41,9 +42,10 @@
                 <td>{{ingredient.vegetarian}}</td>
                 <td>{{ingredient.vegan}}</td>
                 <td>
-                    <input type="number" value="{{getRecipeIngredientQuantity(ingredient.id)}}">
+                    <input type="number" value="{{getRecipeToEditIngredientQuantity(ingredient.id)}}" (focusout) ="addIngredientQuantity(ingredient.id,quant.value)" #quant>
                     <span> {{ingredient.measure}}</span>
                 </td>
+                <td><button (click) = "deleteIngredient(ingredient.id)">Delete</button></td>
             </tr>
         </table>
         <input type="text" #filter>
@@ -55,7 +57,6 @@
                 <td>Type</td>
                 <td>Vegetarian</td>
                 <td>Vegan</td>
-                <td>Quantity</td>
                 <td>Add</td>
             </tr>
             <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
@@ -63,17 +64,13 @@
                 <td>{{getType(ingredient.type)}}</td>
                 <td>{{ingredient.vegetarian}}</td>
                 <td>{{ingredient.vegan}}</td>
-                <td>
-                    <input type="number" #quantity>
-                    <span> {{ingredient.measure}}</span>
-                </td>
-                <td><button (click) ="addIngredient(ingredient.id, quantity.value)">Add</button></td>
+                <td><button (click) ="addIngredient(ingredient.id)">Add</button></td>
             </tr>
         </table>
     </div>
     <div class="stepsContainer">
         <h3>Steps</h3>
-        <div class="stepsContainer" *ngFor="let step of recipe.steps">
+        <div class="stepsContainer" *ngFor="let step of recipeToEdit.steps">
             <label for="steptitle">Tittle</label>
             <input type="text" name="stepTitle" [(ngModel)]=step.title>
             <label for="stepBody">Body</label>
@@ -82,5 +79,6 @@
         </div>
         <button (click)="addStepToRecipe()">Add step</button>
     </div>
+    <button (click)="saveRecipe()">Save</button>
     <button (click)="changeEdit()">Cancel</button>
 </div>

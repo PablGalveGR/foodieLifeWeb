@@ -16,4 +16,10 @@ export class RecipeService {
   getRecipe(id:number) : Observable<Recipe>{
     return of(recipes.find(r => r.id == id)!);
   }
+  saveRecipeUpdated(rep : Recipe){
+    let index = this.recipes.findIndex(r => r.id == rep.id)
+    if(index != undefined){
+      this.recipes[index] = rep;
+    }
+  }
 }

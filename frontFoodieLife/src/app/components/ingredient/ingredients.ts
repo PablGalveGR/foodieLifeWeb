@@ -6,7 +6,7 @@ export let ingredients : Ingredient [] = [
         description: "Test1",
         vegetarian: false,
         vegan:false,
-        measure : "kg"
+        measure : "Kg"
     },
     {
         id: 1, name: "Potato", type: 0,

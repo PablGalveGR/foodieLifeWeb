@@ -37,12 +37,13 @@ export class RecipeDetailComponent {
     steps: []
   };
   ingredientsRecipe: Ingredient[] = [];
-  ingredientsFiltered : Ingredient[] = [];
+  ingredientsFiltered: Ingredient[] = [];
   edit = false;
 
   ngOnInit() {
     this.getRecipe();
   }
+  /*Recipe Functions*/
   getRecipe() {
     let id = Number(this.route.snapshot.paramMap.get('id'))!;
     this.recipeService.getRecipe(id).subscribe(r => this.recipe = r);
@@ -58,50 +59,83 @@ export class RecipeDetailComponent {
     );
     this.getRecipeIngredients(this.recipe.ingredients);
   }
-  getRecipeIngredients(ings: IngredientQuantity[]) {
+  getRecipeIngredients(ings: IngredientQuantity[]) {//Gets the ingredients based on the id passed on the Obj Array
+    this.ingredientsRecipe = [];
     for (let ing of ings) {
       this.ingredientService.getIngredient(ing.id).subscribe(i => this.ingredientsRecipe?.push(i));
-      console.log("Ingredient fetched: " + JSON.stringify(this.ingredientsRecipe[ing.id]));
     }
   }
-  getRecipeIngredientQuantity(id: number): number {
+  getRecipeIngredientQuantity(id: number): number {///Called on the HTML
     let quantity = 0;
     quantity = this.recipe.ingredients.find(i => i.id == id)!.quantity;
     return quantity;
   }
-  getIngredientsForRecipeEdit(): Ingredient[] {
-    let ings: Ingredient[] = [];
-    this.ingredientService.getIngredients().subscribe(i => ings = i)!;
-    return ings;
+  getRecipeToEditIngredientQuantity(id: number): number {///Called on the HTML
+    let quantity = 0;
+    quantity = this.recipeToEdit.ingredients.find(i => i.id == id)!.quantity;
+    return quantity;
   }
-  getType(id: number) {
+  changeEdit() {
+    this.edit = !this.edit;
+    if (this.edit) {
+      console.log("Recipe: " + JSON.stringify(this.recipe));
+      this.recipeToEdit = JSON.parse(JSON.stringify(this.recipe));
+      this.clearFilter();
+    }
+    else {
+      this.getRecipeIngredients(this.recipe.ingredients);
+      this.recipeToEdit = {
+        id: 0,
+        name: '',
+        ingredients: [],
+        steps: []
+      };
+    }
+  }
+  saveRecipe() {
+    this.recipe = JSON.parse(JSON.stringify(this.recipeToEdit));
+    this.recipeService.saveRecipeUpdated(this.recipe);
+    this.changeEdit();
+  }
+  /*Ingredients Functions*/
+  getType(id: number) {//Gets the Type of the ingredient
     let string = "";
     this.typeService.getType(id).subscribe(t => string = t.name);
     return string;
   }
-  filterBy(text : string){
+  filterBy(text: string) {//Filters the ingredients by name
     this.clearFilter();
     this.ingredientsFiltered = this.ingredientsFiltered.filter(i => i.name.toLowerCase().includes(text.toLowerCase()));
-    console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered) );
+    console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered));
 
   }
-  clearFilter(){
-    let allIngs : Ingredient[] = [];
-    this.ingredientService.getIngredients().subscribe( ings => allIngs = ings);
-    this.ingredientsFiltered  = JSON.parse(JSON.stringify(allIngs));
-    for(let i of this.ingredientsRecipe){
-      let index = this.ingredientsFiltered.findIndex(ing => ing.id == i.id);
-      if(index != undefined){
-        this.ingredientsFiltered.splice(index, 1);
-        console.log("Already added: ID: " + i.id + " Name: "+ i.name); 
+  clearFilter() {//Cleans the table of the ingredients that are not added to the recipe
+    let allIngs: Ingredient[] = [];
+    this.ingredientService.getIngredients().subscribe(ings => allIngs = ings);
+    this.ingredientsFiltered = [];
+    for (let ing of allIngs) {
+      if (!this.ingredientsRecipe.find(i => i.id == ing.id)) {
+        this.ingredientsFiltered.push(ing);
       }
     }
   }
-  addIngredient(id :number, quantity : string){
-    let newIng : IngredientQuantity = {id: id, quantity: Number(quantity)};
+  addIngredientQuantity(id: number, quant: string) {/// Adds the quantity of the given ingredient when focusout of the HTML's input
+    let ing = this.recipeToEdit.ingredients.find(i => i.id == id)!;
+    ing.quantity = Number(quant);
+  }
+  addIngredient(id: number) {
+    let newIng: IngredientQuantity = { id: id, quantity: 0 };
     this.recipeToEdit.ingredients.push(newIng!);
     this.getRecipeIngredients(this.recipeToEdit.ingredients);
+    this.clearFilter();
   }
+  deleteIngredient(id: number) {
+    let index = this.recipeToEdit.ingredients.findIndex(i => i.id == id)!;
+    this.recipeToEdit.ingredients.splice(index, 1);
+    this.getRecipeIngredients(this.recipeToEdit.ingredients);
+    this.clearFilter();
+  }
+  /*Steps Functions*/
   addStepToRecipe() {
     let newStep: Step = {
       id: 0,
@@ -122,20 +156,5 @@ export class RecipeDetailComponent {
     let index: number = this.recipeToEdit.steps.findIndex(s => s.id == id);
     console.log("Deleted Step: " + JSON.stringify(this.recipeToEdit.steps[index]));
     this.recipeToEdit.steps.splice(index, 1);
-  }
-  changeEdit() {
-    this.edit = !this.edit;
-    if (this.edit) {
-      this.recipeToEdit = Object.assign({}, this.recipe);
-      this.clearFilter();
-    }
-    else {
-      this.recipeToEdit = {
-        id: 0,
-        name: '',
-        ingredients: [],
-        steps: []
-      };
-    }
   }
 }
