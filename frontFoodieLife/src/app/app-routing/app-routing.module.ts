@@ -5,6 +5,7 @@ import { IngredientsComponent } from '../components/ingredient/ingredients/ingre
 import { IngredientAddComponent } from '../components/ingredient/ingredient-add/ingredient-add.component';
 import { RecipesComponent } from '../components/recipe/recipes/recipes.component';
 import { RecipeDetailComponent } from '../components/recipe/recipe-detail/recipe-detail.component';
+import { RecipeAddComponent } from '../components/recipe/recipe-add/recipe-add.component';
 
 
 export const routes: Routes = [
@@ -12,7 +13,8 @@ export const routes: Routes = [
   {path: 'ingredients/ingredient/detail/:id', component: IngredientDetailComponent},
   {path: 'ingredients/ingredient/add', component: IngredientAddComponent},
   {path: 'recipes', component: RecipesComponent},
-  {path: 'recipes/recipe/detail/:id', component: RecipeDetailComponent}
+  {path: 'recipes/recipe/detail/:id', component: RecipeDetailComponent},
+  {path: 'recipes/recipe/add', component: RecipeAddComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

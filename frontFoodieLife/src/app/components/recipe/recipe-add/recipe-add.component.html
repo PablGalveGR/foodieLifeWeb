@@ -1,0 +1,64 @@
+  
+<div class="recipeAddContainer">
+    <h2>Add recipe</h2>
+    <label for="recipeName">Name:</label>
+    <input type="text" name="recipeName" [(ngModel)]="recipe.name">
+    <!--Ingredients-->
+    <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
+        <h3>Ingredients</h3>
+        <table class="ingredients">
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Vegetarian</td>
+                <td>Vegan</td>
+                <td>Quantity</td>
+                <td>Delete</td>
+            </tr>
+            <tr *ngFor=" let ingredient of ingredientsRecipe" class="ingredient">
+                <td>{{ingredient.name}}</td>
+                <td>{{getType(ingredient.type)}}</td>
+                <td>{{ingredient.vegetarian}}</td>
+                <td>{{ingredient.vegan}}</td>
+                <td>
+                    <input type="number" value="{{getRecipeIngredientQuantity(ingredient.id)}}"
+                        (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
+                    <span> {{ingredient.measure}}</span>
+                </td>
+                <td><button (click)="deleteIngredient(ingredient.id)">Delete</button></td>
+            </tr>
+        </table>
+        <input type="text" #filter>
+        <button (click)="filterBy(filter.value)">Search</button>
+        <button (click)="clearFilter()">Clear</button>
+        <table class="ingredientsToAdd">
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Vegetarian</td>
+                <td>Vegan</td>
+                <td>Add</td>
+            </tr>
+            <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
+                <td>{{ingredient.name}}</td>
+                <td>{{getType(ingredient.type)}}</td>
+                <td>{{ingredient.vegetarian}}</td>
+                <td>{{ingredient.vegan}}</td>
+                <td><button (click)="addIngredient(ingredient.id)">Add</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="stepsContainer">
+        <h3>Steps</h3>
+        <div class="stepsContainer" *ngFor="let step of recipe.steps">
+            <label for="steptitle">Tittle</label>
+            <input type="text" name="stepTitle" [(ngModel)]=step.title>
+            <label for="stepBody">Body</label>
+            <textarea name="stepBody" [(ngModel)]=step.body></textarea>
+            <button (click)="deleteStep(step.id)">Delete</button>
+        </div>
+        <button (click)="addStepToRecipe()">Add step</button>
+    </div>
+    <button (click)="saveRecipe()">Save</button>
+    <button (click) = "goBack()">Cancel</button>
+</div>

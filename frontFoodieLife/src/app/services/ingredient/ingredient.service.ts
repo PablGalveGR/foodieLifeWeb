@@ -38,6 +38,9 @@ export class IngredientService {
     console.log("Deleted ingredient: "+ JSON.stringify(this.ingredients[index]));
     this.ingredients.splice(index, 1);
   }
+  getLastId() : number{
+    return this.ingredients[ this.ingredients.length -1].id;
+  }
   ngOnDestroy(){
     console.log("Service Ingredients Killed");
   }

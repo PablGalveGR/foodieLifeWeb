@@ -16,10 +16,16 @@ export class RecipeService {
   getRecipe(id:number) : Observable<Recipe>{
     return of(recipes.find(r => r.id == id)!);
   }
-  saveRecipeUpdated(rep : Recipe){
-    let index = this.recipes.findIndex(r => r.id == rep.id)
+  saveRecipeUpdated(recipe : Recipe){
+    let index = this.recipes.findIndex(r => r.id == recipe.id)
     if(index != undefined){
-      this.recipes[index] = rep;
+      this.recipes[index] = recipe;
     }
+  }
+  saveRecipe(recipe : Recipe){
+    this.recipes.push(recipe);
+  }
+  getLastId() : number{
+    return this.recipes[ this.recipes.length -1].id;
   }
 }

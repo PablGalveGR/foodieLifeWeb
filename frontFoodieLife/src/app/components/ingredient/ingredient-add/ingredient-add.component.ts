@@ -17,9 +17,9 @@ import { IngredientService } from '../../../services/ingredient/ingredient.servi
 export class IngredientAddComponent {
   constructor(private location: Location,
     private typeService: TypeService,
-    private ingredientService: IngredientService) { 
-      console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
-    }
+    private ingredientService: IngredientService) {
+    console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
+  }
 
   ingredient: Ingredient = {
     id: 0,
@@ -38,15 +38,10 @@ export class IngredientAddComponent {
 
   saveIngredient(ingredient: Ingredient): void {
     if (ingredient != undefined) {
-      let ings: Ingredient[] = [];
-      this.ingredientService.getIngredients().subscribe(ingredients => ings = ingredients);
-      if (ings != undefined) {
-        const lastID: number = ings[ings.length - 1].id;
-        this.ingredient.id = lastID + 1;
-        this.ingredientService.saveIngredient(ingredient);
-        console.log("Ingredient added: " + JSON.stringify(ings));
-      }
-
+      const lastID: number = this.ingredientService.getLastId();
+      this.ingredient.id = lastID + 1;
+      this.ingredientService.saveIngredient(ingredient);
+      console.log("Ingredient added: " + JSON.stringify(this.ingredient));
     }
 
   }
