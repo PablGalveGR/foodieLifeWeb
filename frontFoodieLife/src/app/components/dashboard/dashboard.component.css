@@ -1,0 +1,26 @@
+div.recipesContainer{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+div.recipesContainer div.recipeContainer{
+  background-color: rgb(255, 255, 247);
+  border: 0.1rem, solid, green;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+div.recipesContainer div.recipeContainer *{
+  padding: 0.2rem;
+}
+div.recipesContainer div.recipeContainer:hover{
+  border: 0.1rem solid greenyellow;
+  cursor: pointer;
+}
+div.recipesContainer div.recipeContainer h2.recipeName{
+  font-size: 2rem;
+}
+ul li{
+  padding-left: 2rem;
+  list-style-type:'- ';
+}

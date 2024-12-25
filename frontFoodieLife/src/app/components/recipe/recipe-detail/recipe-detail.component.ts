@@ -27,12 +27,14 @@ export class RecipeDetailComponent {
   recipe: Recipe = {
     id: 0,
     name: '',
+    description: '',
     ingredients: [],
     steps: []
   };
   recipeToEdit: Recipe = {
     id: 0,
     name: '',
+    description: '',
     ingredients: [],
     steps: []
   };
@@ -87,6 +89,7 @@ export class RecipeDetailComponent {
       this.recipeToEdit = {
         id: 0,
         name: '',
+        description: '',
         ingredients: [],
         steps: []
       };

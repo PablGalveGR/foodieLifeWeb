@@ -6,9 +6,11 @@ import { IngredientAddComponent } from '../components/ingredient/ingredient-add/
 import { RecipesComponent } from '../components/recipe/recipes/recipes.component';
 import { RecipeDetailComponent } from '../components/recipe/recipe-detail/recipe-detail.component';
 import { RecipeAddComponent } from '../components/recipe/recipe-add/recipe-add.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
+  {path: '', component:DashboardComponent},
   {path: 'ingredients', component:IngredientsComponent},
   {path: 'ingredients/ingredient/detail/:id', component: IngredientDetailComponent},
   {path: 'ingredients/ingredient/add', component: IngredientAddComponent},

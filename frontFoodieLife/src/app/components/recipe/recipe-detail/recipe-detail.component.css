@@ -1,0 +1,40 @@
+div.recipeContainer{
+  background-color: rgb(255, 255, 247);
+  padding: 2rem;
+}
+div.recipeContainer div{
+  padding: 0.5rem;
+}
+div.recipeContainer p{
+  padding: 0.5rem;
+  padding-bottom: 2rem;
+}
+div.recipeContainer p.stepBody{
+  padding: 0.5rem;
+}
+/*Titles*/
+div.recipeContainer h2.recipeName{
+  font-size: 2rem;
+}
+button.editRecipe{
+  margin-left: 3rem;
+}
+div.recipeContainer h3{
+  font-size: 1.5rem;
+}
+div.recipeContainer h4{
+  font-size: 1.2rem;
+}
+/*End Titles*/
+/*Ingredients */
+div.recipeContainer div.ingredientsContainer{
+  border-top: 0.1rem dashed black;
+}
+div.recipeContainer div.ingredientsContainer ul{
+  padding-left: 2rem;
+  list-style-type:'- ';
+}
+ol.stepsList{
+  padding-left: 2rem;
+}
+

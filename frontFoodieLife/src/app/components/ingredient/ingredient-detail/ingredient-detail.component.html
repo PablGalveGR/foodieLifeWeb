@@ -25,6 +25,7 @@
     </table>
     <button class="editButton" (click)="changeEdit()" *ngIf="!edit">Edit</button>
   </div>
+  <!--Edit ingredient -->
   <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit ">
     <label for="ingredient-name">Name</label>
     <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}} [(ngModel)]=ingredientToEdit.name>

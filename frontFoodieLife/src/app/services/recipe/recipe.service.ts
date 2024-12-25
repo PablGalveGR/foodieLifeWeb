@@ -13,6 +13,13 @@ export class RecipeService {
   getRecipes () : Observable<Recipe[]>{
     return of(this.recipes);
   }
+  getXRecipes(ids : number[]) : Observable<Recipe[]>{
+    let returnedRecipes :Recipe[] = [];
+    for( let id of ids){
+      returnedRecipes.push(this.recipes.find( rec => rec.id == id)!);
+    }
+    return of(returnedRecipes);
+  }
   getRecipe(id:number) : Observable<Recipe>{
     return of(recipes.find(r => r.id == id)!);
   }

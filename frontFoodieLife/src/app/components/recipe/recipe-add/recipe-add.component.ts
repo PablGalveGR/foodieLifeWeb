@@ -30,6 +30,7 @@ export class RecipeAddComponent {
   recipe: Recipe = {
     id: 0,
     name: '',
+    description: '',
     ingredients: [],
     steps: []
   };

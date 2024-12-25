@@ -2,6 +2,7 @@
 <input type="text" (keyup.enter)="filterBy(filter.value)" #filter>
 <button (click) = "filterBy(filter.value)">Search</button>
 <button (click) = "clearFilter()">Clear</button>
+<button (click) = "goToAdd()">Add</button>
 <table class="ingredients">
     <tr>
         <td>ID</td>

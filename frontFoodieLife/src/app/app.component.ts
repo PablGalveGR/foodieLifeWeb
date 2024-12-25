@@ -10,5 +10,5 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontFoodieLife';
+  title = 'FoodieLife';
 }

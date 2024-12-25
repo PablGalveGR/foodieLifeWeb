@@ -5,7 +5,7 @@ import { IngredientService } from '../../../services/ingredient/ingredient.servi
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TypeService } from '../../../services/type/type.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ingredients',
   standalone: true,
@@ -14,11 +14,14 @@ import { TypeService } from '../../../services/type/type.service';
   styleUrl: './ingredients.component.css'
 })
 export class IngredientsComponent {
-  constructor(private ingredientService: IngredientService, private typeService: TypeService) { 
+  constructor(
+    private ingredientService: IngredientService,
+    private typeService: TypeService,
+    private router: Router) {
     console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
   }
   ingredients: Ingredient[] = [];
-  ingredientsFiltered : Ingredient[] = [];
+  ingredientsFiltered: Ingredient[] = [];
   ngOnInit() {
     this.getIngredients();
   }
@@ -27,21 +30,24 @@ export class IngredientsComponent {
     this.ingredientsFiltered = Object.assign(this.ingredients);
     console.log("Ingredient List: " + JSON.stringify(this.ingredients));
   }
-  getType(id:number) : string{
-    let res : string = ''; 
+  getType(id: number): string {
+    let res: string = '';
     this.typeService.getType(id).subscribe(t => res = t.name);
     return res;
   }
-  filterBy(text : string){
+  filterBy(text: string) {
     this.clearFilter();
     this.ingredientsFiltered = this.ingredientsFiltered.filter(i => i.name.toLowerCase().includes(text.toLowerCase()));
-    console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered) );
-    console.log("No Filtered :" + JSON.stringify(this.ingredients) );
+    console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered));
+    console.log("No Filtered :" + JSON.stringify(this.ingredients));
   }
-  clearFilter(){
+  clearFilter() {
     this.ingredientsFiltered = Object.assign(this.ingredients);
   }
-  deleteIngredient(id :number){
+  deleteIngredient(id: number) {
     this.ingredientService.deleteIngredient(id);
+  }
+  goToAdd() {
+    this.router.navigate(['/ingredients/ingredient/add']);
   }
 }
