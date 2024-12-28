@@ -1,26 +1,42 @@
-div.recipesContainer{
- display: flex;
- flex-direction: row;
- justify-content: space-between;
+div.recipesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-div.recipesContainer div.recipeContainer{
-  background-color: rgb(255, 255, 247);
-  border: 0.1rem, solid, green;
+
+div.recipesContainer div.recipeContainer {
+  background-color: var(--contentBackgroundColor);
+  border: 0.1rem, solid, var(--secondaryColor);
   border-radius: 0.5rem;
   margin: 1rem;
   padding: 1rem;
 }
-div.recipesContainer div.recipeContainer *{
+
+div.recipesContainer div.recipeContainer * {
   padding: 0.2rem;
 }
-div.recipesContainer div.recipeContainer:hover{
+
+div.recipesContainer div.recipeContainer:hover {
   border: 0.1rem solid greenyellow;
   cursor: pointer;
 }
-div.recipesContainer div.recipeContainer h2.recipeName{
+
+div.recipesContainer div.recipeContainer h2.recipeName {
   font-size: 2rem;
 }
-ul li{
+
+div.ingredientsContainer h3 {
+  font-size: 1.2rem;
+}
+
+ul li {
   padding-left: 2rem;
-  list-style-type:'- ';
+  list-style-type: '- ';
+}
+
+ul li:hover {
+  border: 0.05rem solid black;
+  background-color: rgba(33, 158, 33, 0.547);
+  color: white;
+  cursor: pointer;
 }

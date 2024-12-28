@@ -1,0 +1,41 @@
+div.recipeAddContainer {
+  background-color: var(--contentBackgroundColor);
+  padding: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1%;
+
+}
+
+div.recipeAddContainer h2 {
+  font-size: 2rem;
+}
+
+div.recipeAddContainer h3 {
+  font-size: 1.5rem;
+}
+
+div.recipeAddContainer h4 {
+  font-size: 1.2rem;
+}
+
+/*Ingredients*/
+/*tables*/
+table.ingredients {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid var(--secondaryColor);
+}
+
+table.ingredients tr:nth-child(even) {
+  background-color: var(--tableColor);
+}
+
+table.ingredients tr:hover {
+  background-color: var(--tableHightLightColor)
+}
+
+table.ingredients td {
+  padding: 0.5rem;
+  border: none;
+}

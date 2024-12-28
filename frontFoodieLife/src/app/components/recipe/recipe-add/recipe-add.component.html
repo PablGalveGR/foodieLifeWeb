@@ -1,12 +1,12 @@
 <div class="recipeAddContainer">
   <h2>Add recipe</h2>
-  <label for="recipeName">Name:</label>
-  <input type="text" name="recipeName" [(ngModel)]="recipe.name">
-  <label for="recipeDesc">Description</label>
+  <label for="recipeName">Name:</label><br>
+  <input type="text" name="recipeName" [(ngModel)]="recipe.name"><br>
+  <label for="recipeDesc">Description</label><br>
   <textarea name="recipeDesc" [(ngModel)]=recipe.description></textarea>
   <!--Ingredients-->
   <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
-    <h3>Ingredients</h3>
+    <h3 class="ingredientsTitle">Ingredients</h3>
     <table class="ingredients">
       <tr>
         <td>Name</td>
@@ -32,7 +32,7 @@
     <input type="text" #filter>
     <button (click)="filterBy(filter.value)">Search</button>
     <button (click)="clearFilter()">Clear</button>
-    <table class="ingredientsToAdd">
+    <table class="ingredients">
       <tr>
         <td>Name</td>
         <td>Type</td>
@@ -53,9 +53,9 @@
   <div class="stepsContainer">
     <h3>Steps</h3>
     <div class="stepsContainer" *ngFor="let step of recipe.steps">
-      <label for="steptitle">Tittle</label>
-      <input type="text" name="stepTitle" [(ngModel)]=step.title>
-      <label for="stepBody">Body</label>
+      <label for="steptitle">Tittle</label><br>
+      <input type="text" name="stepTitle" [(ngModel)]=step.title><br>
+      <label for="stepBody">Body</label><br>
       <textarea name="stepBody" [(ngModel)]=step.body></textarea>
       <button (click)="deleteStep(step.id)">Delete</button>
     </div>

@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { Step } from '../Step';
 import { FormsModule } from '@angular/forms';
 import { IngredientQuantity } from '../IngredientQuantity';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -23,7 +24,8 @@ export class RecipeDetailComponent {
     private ingredientService: IngredientService,
     private typeService: TypeService,
     private recipeService: RecipeService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
   recipe: Recipe = {
     id: 0,
     name: '',
@@ -101,6 +103,9 @@ export class RecipeDetailComponent {
     this.changeEdit();
   }
   /*Ingredients Functions*/
+  goToIngredient(id: number) {
+    this.router.navigate(['/ingredients/ingredient/detail/' + id]);
+  }
   getType(id: number) {//Gets the Type of the ingredient
     let string = "";
     this.typeService.getType(id).subscribe(t => string = t.name);

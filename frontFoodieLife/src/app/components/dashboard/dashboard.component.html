@@ -1,4 +1,4 @@
-<div class="recipesContainer" >
+<div class="recipesContainer">
   <div class="recipeContainer" *ngFor=" let recipe of recipes" (click)="goToRecipe(recipe.id)">
     <h2 class="recipeName">{{recipe.name}}</h2>
     <p>{{recipe.description}}</p>
@@ -6,13 +6,11 @@
     <div class="ingredientsContainer">
       <h3>Ingredients</h3>
       <ul *ngFor="let ingredient of getRecipeIngredients(recipe.ingredients)">
-        <li>
-          <a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">
-            {{ingredient.name}}
-          </a><span>{{getRecipeIngredientQuantity(ingredient.id, recipe)}} {{ingredient.measure}}</span>
+        <li (click)="goToIngredient(ingredient.id)">
+          {{ingredient.name}} <span>{{getRecipeIngredientQuantity(ingredient.id, recipe)}} {{ingredient.measure}}</span>
         </li>
       </ul>
+    </div>
   </div>
-</div>
 
 </div>

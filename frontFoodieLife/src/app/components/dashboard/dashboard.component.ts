@@ -39,6 +39,9 @@ export class DashboardComponent {
   goToRecipe(id: number) {
     this.router.navigate(['/recipes/recipe/detail/' + id]);
   }
+  goToIngredient(id: number) {
+    this.router.navigate(['/ingredients/ingredient/detail/' + id]);
+  }
   getType(id: number) {//Gets the Type of the ingredient
     let string = "";
     this.typeService.getType(id).subscribe(t => string = t.name);

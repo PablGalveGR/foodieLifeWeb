@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --mainBackgoundColor: rgb(251, 251, 237);
+  --contentBackgroundColor: rgb(255, 255, 247);
+  --mainColor: rgb(255, 255, 247);
+  --secondaryColor: rgb(33, 158, 33);
+  --hightLightColor: rgb(0,0,0);
+  --tableColor:rgba(33, 158, 33, 0.186);
+  --tableHightLightColor: rgba(33, 158, 33, 0.549);
+}
 html, *{
   box-sizing: border-box;
   margin: 0;
@@ -9,3 +18,4 @@ html, *{
 html{
   background-color: rgb(251, 251, 237);
 }
+
