@@ -16,5 +16,8 @@ export const types: Type[] = [
         id: 3,
         name: "Animal Product"
     },
-    {id : 4, name: "Liquid"}
+    {
+        id : 4, 
+        name: "Liquid"
+    }
 ]

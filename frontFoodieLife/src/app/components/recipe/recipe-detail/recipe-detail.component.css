@@ -48,9 +48,12 @@ div.recipeContainer div.ingredientsContainer ul {
   min-width: fit-content;
   max-width: 25%;
 }
-
+div.recipeContainer div.ingredientsContainer ul li{
+  padding: 0.25rem;
+  margin: 0.15rem;
+}
 div.recipeContainer div.ingredientsContainer ul li:hover {
-  border: 0.01rem solid black;
+  border-radius: 0.5rem;
   background-color: var(--tableHightLightColor);
   color: white;
   cursor: pointer;
@@ -98,7 +101,7 @@ table.ingredients tr:nth-child(even) {
   background-color: var(--tableColor);
 }
 
-table.ingredients tr:hover {
+table.ingredients tr.ingredient:hover {
   background-color: var(--tableHightLightColor)
 }
 

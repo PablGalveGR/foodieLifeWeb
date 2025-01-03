@@ -6,6 +6,7 @@ import { Type } from '../Type';
 import { TypeService } from '../../../services/type/type.service';
 import { NgFor } from '@angular/common';
 import { IngredientService } from '../../../services/ingredient/ingredient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingredient-add',
@@ -17,7 +18,8 @@ import { IngredientService } from '../../../services/ingredient/ingredient.servi
 export class IngredientAddComponent {
   constructor(private location: Location,
     private typeService: TypeService,
-    private ingredientService: IngredientService) {
+    private ingredientService: IngredientService,
+    private router: Router) {
     console.log("Ingredients Service instance: " + JSON.stringify(ingredientService));
   }
 
@@ -42,6 +44,8 @@ export class IngredientAddComponent {
       this.ingredient.id = lastID + 1;
       this.ingredientService.saveIngredient(ingredient);
       console.log("Ingredient added: " + JSON.stringify(this.ingredient));
+      this.router.navigate(['ingredients']);
+
     }
 
   }

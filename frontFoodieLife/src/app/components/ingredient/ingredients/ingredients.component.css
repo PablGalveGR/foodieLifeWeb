@@ -1,0 +1,35 @@
+/*Ingredients*/
+h2.ListTitle{
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+/*Search Bar*/
+div.searchBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+div.searchBar input.bar{
+  flex: 5;
+}
+/*tables*/
+table.ingredients {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid var(--secondaryColor);
+  width: 100%;
+}
+
+table.ingredients tr:nth-child(even) {
+  background-color: var(--tableColor);
+}
+
+table.ingredients tr.ingredient:hover {
+  background-color: var(--tableHightLightColor);
+  cursor: pointer;
+}
+
+table.ingredients td {
+  padding: 0.5rem;
+  border: none;
+}

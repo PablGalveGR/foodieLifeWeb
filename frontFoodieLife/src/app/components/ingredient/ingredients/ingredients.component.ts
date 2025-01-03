@@ -50,4 +50,7 @@ export class IngredientsComponent {
   goToAdd() {
     this.router.navigate(['/ingredients/ingredient/add']);
   }
+  goToDetail(id:number){
+    this.router.navigate(['/ingredients/ingredient/detail/'+id]);
+  }
 }

@@ -14,7 +14,7 @@ export class TypeService {
     return t;
   }
   getType(id : number) : Observable<Type>{
-    let t = types.find(t_ => t_.id === id)!;
+    let t = types.find(t_ => t_.id == id)!;
     return of(t);
   }
 }

@@ -31,7 +31,7 @@ table.ingredients tr:nth-child(even) {
   background-color: var(--tableColor);
 }
 
-table.ingredients tr:hover {
+table.ingredients tr.ingredient:hover {
   background-color: var(--tableHightLightColor)
 }
 

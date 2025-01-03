@@ -1,23 +1,27 @@
-<h2>List of ingredients</h2>
-<input type="text" (keyup.enter)="filterBy(filter.value)" #filter>
-<button (click) = "filterBy(filter.value)">Search</button>
-<button (click) = "clearFilter()">Clear</button>
-<button (click) = "goToAdd()">Add</button>
-<table class="ingredients">
+<div class="mainContent">
+  <h2 class="ListTitle">List of ingredients</h2>
+  <button (click)="goToAdd()">Add</button>
+  <div class="searchBar">
+    <input class="bar" type="text" (keyup.enter)="filterBy(filter.value)" #filter>
+    <button (click)="filterBy(filter.value)">Search</button>
+    <button (click)="clearFilter()">Clear</button>
+  </div>
+  <table class="ingredients">
     <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Type</td>
-        <td>Vegetarian</td>
-        <td>Vegan</td>
-        <td>Delete</td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Type</td>
+      <td>Vegetarian</td>
+      <td>Vegan</td>
+      <td>Delete</td>
     </tr>
-    <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
-        <td><a routerLink="/ingredients/ingredient/detail/{{ingredient.id}}">{{ingredient.id}}</a></td>
-        <td>{{ingredient.name}}</td>
-        <td>{{getType(ingredient.type)}}</td>
-        <td>{{ingredient.vegetarian}}</td>
-        <td>{{ingredient.vegan}}</td>
-        <td><button (click)=deleteIngredient(ingredient.id)>Delete</button></td>
+    <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient" (click)="goToDetail(ingredient.id)">
+      <td>{{ingredient.id}}</td>
+      <td>{{ingredient.name}}</td>
+      <td>{{getType(ingredient.type)}}</td>
+      <td>{{ingredient.vegetarian}}</td>
+      <td>{{ingredient.vegan}}</td>
+      <td><button (click)=deleteIngredient(ingredient.id)>Delete</button></td>
     </tr>
-</table>
+  </table>
+</div>
