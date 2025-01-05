@@ -4,10 +4,18 @@
         <tr>
             <td>ID</td>
             <td>Name</td>
+            <td>Ingredients</td>
+            <td>Steps</td>
+            <td>Vegetarian</td>
+            <td>Vegan</td>
+            <td>Delete</td>
         </tr>
         <tr *ngFor = "let recipe of recipes">
             <td><a routerLink ="/recipes/recipe/detail/{{recipe.id}}">{{recipe.id}}</a></td>
             <td>{{recipe.name}}</td>
+            <td>{{getNumberOfIngredients(recipe.id)}}</td>
+            <td>{{getNumberOfSteps(recipe.id)}}</td>
+            <td><button (click) = "deleteRecipe(recipe.id)">Delete</button></td>
         </tr>
     </table>
 </div>

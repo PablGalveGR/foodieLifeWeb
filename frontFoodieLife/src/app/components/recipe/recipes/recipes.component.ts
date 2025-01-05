@@ -20,8 +20,19 @@ export class RecipesComponent {
   getRecipes(){
     this.recipeService.getRecipes().subscribe(r => this.recipes = r);
   }
+  deleteRecipe(id : number){
+    this.recipeService.deleteRecipe(id);
+  }
   goToAdd(){
     this.router.navigate(['/recipes/recipe/add']);
   }
+  getNumberOfIngredients(id : number){
+    return this.recipeService.getNumberOfIngredients(id);
+  }
+  getNumberOfSteps(id : number){
+    return this.recipeService.getNumberOfSteps(id);
+  }
+  getItsVegeterian(){}
+  getItsVegan(){}
 
 }

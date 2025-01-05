@@ -55,9 +55,8 @@ export class RecipeAddComponent {
   }
   saveRecipe() {
     if(this.recipe.name != undefined && this.recipe.steps.length > 0 && this.recipe.ingredients.length > 0){
-      //Gets the last ID of the last recipe added
     //Code to change when DB implemented 
-    this.recipe.id = this.recipeService.getLastId() +1;
+    this.recipe.id = 0;
     console.log("Recipe to Add: "+ JSON.stringify(this.recipe));
     this.recipeService.saveRecipe(this.recipe);
     this.goToDetail(this.recipe.id);
