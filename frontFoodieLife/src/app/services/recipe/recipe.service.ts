@@ -63,17 +63,17 @@ export class RecipeService {
   getItsVegeterianVegan(ings: IngredientQuantity[]): boolean[] {//Array [Vegetarian. Vegan]
     let veggie = true;
     let vegan = true;
+    let ingredient: Ingredient = {
+      id: 0,
+      name: '',
+      type: 0,
+      price: 0,
+      description: '',
+      vegetarian: false,
+      vegan: false,
+      measure: ''
+    };
     for (let ingr of ings) {
-      let ingredient: Ingredient = {
-        id: 0,
-        name: '',
-        type: 0,
-        price: 0,
-        description: '',
-        vegetarian: false,
-        vegan: false,
-        measure: ''
-      };
       this.ingredientService.getIngredient(ingr.id).subscribe(ing => ingredient = ing);
       if (!ingredient.vegan) {
         vegan = false;
