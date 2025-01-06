@@ -165,4 +165,7 @@ export class RecipeDetailComponent {
     console.log("Deleted Step: " + JSON.stringify(this.recipeToEdit.steps[index]));
     this.recipeToEdit.steps.splice(index, 1);
   }
+  getItsVegeterianVegan(ings : IngredientQuantity[]) : boolean[]{
+    return this.recipeService.getItsVegeterianVegan(ings);
+  }
 }

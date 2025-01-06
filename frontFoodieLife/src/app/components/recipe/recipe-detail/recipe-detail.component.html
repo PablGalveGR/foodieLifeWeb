@@ -1,4 +1,4 @@
-<div class="recipeContainer" *ngIf=" recipe != undefined && !edit">
+<div class="mainContent" *ngIf=" recipe != undefined && !edit">
   <h2 class="recipeName">{{recipe.name}}<button (click)="changeEdit()" class="editRecipe">Edit</button></h2>
   <p>{{recipe.description}}</p>
   <!--Ingredients-->
@@ -23,8 +23,8 @@
 
 </div>
 <!--Edit Recipe -->
-<div class="recipeEditContainer" *ngIf="edit">
-  <h2>Recipe: {{recipeToEdit.name}}</h2>
+<div class="mainContent" *ngIf="edit">
+  <h2 class="recipeName">Recipe: {{recipeToEdit.name}}</h2>
   <label for="recipeName">Name:</label><br>
   <input type="text" name="recipeName" [(ngModel)]="recipeToEdit.name"><br>
   <label for="recipeDesc">Description</label><br>

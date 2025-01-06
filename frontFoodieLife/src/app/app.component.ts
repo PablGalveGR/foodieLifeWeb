@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @Component({
@@ -11,4 +11,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 })
 export class AppComponent {
   title = 'FoodieLife';
+  constructor(private router : Router){}
+  goTo(url : string){
+    this.router.navigate([url]);
+  }
 }

@@ -22,14 +22,12 @@ nav ul{
 nav ul li{
   list-style: none;
   padding: 2rem;
+  font-size: 1.5rem;
+  color:white;
 }
 nav ul li:hover{
   background-color: var(--secondaryColor);
-}
-nav ul a{
-  font-size: 1.5rem;
-  text-decoration: none;
-  color:white;
+  cursor: pointer;
 }
 /*End Nav Styles*/
 /*Footer Styles*/

@@ -1,26 +1,18 @@
-div.recipeContainer {
-  background-color: var(--contentBackgroundColor);
-  padding: 2rem;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 1%;
-}
-
-div.recipeContainer div {
+div.mainContent div {
   padding: 0.5rem;
 }
 
-div.recipeContainer p {
+div.mainContent p {
   padding: 0.5rem;
   padding-bottom: 2rem;
 }
 
-div.recipeContainer p.stepBody {
+p.stepBody {
   padding: 0.5rem;
 }
 
 /*Titles*/
-div.recipeContainer h2.recipeName {
+h2.recipeName {
   font-size: 2rem;
 }
 
@@ -28,31 +20,31 @@ button.editRecipe {
   margin-left: 3rem;
 }
 
-div.recipeContainer h3 {
+div.mainContent h3 {
   font-size: 1.5rem;
 }
 
-div.recipeContainer h4 {
+div.mainContent h4 {
   font-size: 1.2rem;
 }
 
 /*Ingredients */
 
-div.recipeContainer div.ingredientsContainer h3.ingredientsTitle {
+div.ingredientsContainer h3.ingredientsTitle {
   border-top: 0.15rem dashed var(--tableHightLightColor);
 }
 
-div.recipeContainer div.ingredientsContainer ul {
+div.ingredientsContainer ul {
   padding-left: 2rem;
   list-style-type: '- ';
   min-width: fit-content;
   max-width: 25%;
 }
-div.recipeContainer div.ingredientsContainer ul li{
+div.ingredientsContainer ul li{
   padding: 0.25rem;
   margin: 0.15rem;
 }
-div.recipeContainer div.ingredientsContainer ul li:hover {
+div.ingredientsContainer ul li:hover {
   border-radius: 0.5rem;
   background-color: var(--tableHightLightColor);
   color: white;
@@ -68,27 +60,6 @@ div.stepsContainer ol.stepsList {
   padding-left: 2rem;
 }
 /*Edit Recipe*/
-div.recipeEditContainer {
-  background-color: var(--contentBackgroundColor);
-  padding: 2rem;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 1%;
-
-}
-
-div.recipeEditContainer h2 {
-  font-size: 2rem;
-}
-
-div.recipeEditContainer h3 {
-  font-size: 1.5rem;
-}
-
-div.recipeEditContainer h4 {
-  font-size: 1.2rem;
-}
-
 /*Ingredients*/
 /*tables*/
 table.ingredients {

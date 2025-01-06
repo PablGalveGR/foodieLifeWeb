@@ -1,11 +1,11 @@
 <nav>
   <h1 class="title">{{title}}</h1>
   <ul>
-    <li><a routerLink="">Home</a></li>
-    <li><a routerLink="/recipes">Recipes</a></li>
-    <li><a routerLink="/ingredients">Ingredients</a></li>
-    <li><a>Sing Up</a></li>
-    <li><a>Login</a></li>
+    <li (click) = "goTo('')">Home</li>
+    <li (click) = "goTo('/recipes')">Recipes</li>
+    <li (click) = "goTo('/ingredients')">Ingredients</li>
+    <li>Sing Up</li>
+    <li>Login</li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

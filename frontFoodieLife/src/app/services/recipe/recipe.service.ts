@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { recipes } from '../../components/recipe/recipes';
 import { Observable, of } from 'rxjs';
 import { Recipe } from '../../components/recipe/Recipe';
+import { IngredientService } from '../ingredient/ingredient.service';
+import { Ingredient } from '../../components/ingredient/Ingredient';
+import { IngredientQuantity } from '../../components/recipe/IngredientQuantity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  constructor() { }
+  constructor(private ingredientService: IngredientService) { }
   recipes = recipes;
   getRecipes(): Observable<Recipe[]> {
     return of(this.recipes);
@@ -23,26 +26,26 @@ export class RecipeService {
   getRecipe(id: number): Observable<Recipe> {
     return of(recipes.find(r => r.id == id)!);
   }
-  getNumberOfIngredients(id : number){
+  getNumberOfIngredients(id: number) {
     let num = this.recipes[id].ingredients.length;
     return num;
   }
-  getNumberOfSteps(id : number){
+  getNumberOfSteps(id: number) {
     let num = this.recipes[id].steps.length;
     return num;
   }
   saveRecipeUpdated(recipe: Recipe) {
-    
+
     if (this.recipes.length != 0) {
       let index = this.recipes.findIndex(r => r.id == recipe.id)
-      if(index != undefined){
+      if (index != undefined) {
         this.recipes[index] = recipe;
       }
     }
-    
+
   }
   saveRecipe(recipe: Recipe) {
-    recipe.id = this.getLastId() +1;
+    recipe.id = this.getLastId() + 1;
     this.recipes.push(recipe);
   }
   deleteRecipe(id: number) {
@@ -52,17 +55,36 @@ export class RecipeService {
     }
   }
   getLastId(): number {
-    if(this.recipes.length != 0){
+    if (this.recipes.length != 0) {
       return this.recipes[this.recipes.length - 1].id;
     }
     return 0;
   }
-  getItsVegeterianVegan(id : number) :boolean[]{//Array [Vegetarian. Vegan]
-    let recipe = this.recipes.find(r => r.id == id);
-    let ingredients : boolean[][] = [[]];
+  getItsVegeterianVegan(ings: IngredientQuantity[]): boolean[] {//Array [Vegetarian. Vegan]
     let veggie = true;
     let vegan = true;
-    
-    return [veggie , vegan];
+    for (let ingr of ings) {
+      let ingredient: Ingredient = {
+        id: 0,
+        name: '',
+        type: 0,
+        price: 0,
+        description: '',
+        vegetarian: false,
+        vegan: false,
+        measure: ''
+      };
+      this.ingredientService.getIngredient(ingr.id).subscribe(ing => ingredient = ing);
+      if (!ingredient.vegan) {
+        vegan = false;
+      }
+      if (!ingredient.vegetarian) {
+        veggie = false;
+      }
+      if (!vegan && !veggie) {
+        return [veggie, vegan];
+      }
+    }
+    return [veggie, vegan];
   }
 }

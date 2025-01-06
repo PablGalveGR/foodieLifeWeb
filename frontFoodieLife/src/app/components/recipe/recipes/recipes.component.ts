@@ -4,6 +4,7 @@ import { RecipeService } from '../../../services/recipe/recipe.service';
 import { NgIf, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { IngredientQuantity } from '../IngredientQuantity';
 @Component({
   selector: 'app-recipes',
   standalone: true,
@@ -32,7 +33,11 @@ export class RecipesComponent {
   getNumberOfSteps(id : number){
     return this.recipeService.getNumberOfSteps(id);
   }
-  getItsVegeterian(){}
-  getItsVegan(){}
+  getItsVegeterianVegan(ings : IngredientQuantity[]) : boolean[]{
+    return this.recipeService.getItsVegeterianVegan(ings);
+  }
+  goToDetail(id : number){
+    this.router.navigate(['/recipes/recipe/detail/'+id ]);
+  }
 
 }
