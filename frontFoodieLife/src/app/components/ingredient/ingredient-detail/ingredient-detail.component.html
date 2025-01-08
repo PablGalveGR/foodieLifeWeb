@@ -1,28 +1,25 @@
 <div class="mainContent" *ngIf="ingredient">
   <h2>Ingredient</h2>
-  <div class="ingredientDetailTableContainer">
-    <table>
-      <tr>
-        <td>Name</td>
-        <td>{{ingredient.name}}</td>
-      </tr>
-      <tr>
-        <td>Type</td>
-        <td>{{getType(ingredient.type)}}</td>
-      </tr>
-      <tr>
-        <td>Description</td>
-        <td>{{ingredient.description}}</td>
-      </tr>
-      <tr>
-        <td>Vegetarian</td>
-        <td>{{ingredient.vegetarian}}</td>
-      </tr>
-      <tr>
-        <td>Vegan</td>
-        <td>{{ingredient.vegan}}</td>
-      </tr>
-    </table>
+  <p>Veggie :{{ingredient.vegetarian}} Vegan :{{ingredient.vegan}}</p>
+  <div class="ingredientDetailContainer">
+    <div class="row1">
+      <div class="nameContainer">
+        <h3>Name</h3>
+        <p>{{ingredient.name}}</p>
+      </div>
+      <div class="typeContainer">
+        <h3>Type</h3>
+        <p>{{getType(ingredient.type)}}</p>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="descContainer">
+        <h3>Description</h3>
+        <p>{{ingredient.description}}</p>
+      </div>
+    </div>
+    
+    
     <button class="editButton" (click)="changeEdit()" *ngIf="!edit">Edit</button>
   </div>
   <!--Edit ingredient -->
