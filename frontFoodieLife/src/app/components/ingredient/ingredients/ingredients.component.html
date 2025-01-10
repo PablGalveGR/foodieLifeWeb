@@ -7,7 +7,7 @@
     <button (click)="clearFilter()">Clear</button>
   </div>
   <table class="ingredients">
-    <tr>
+    <tr id="header">
       <td>ID</td>
       <td>Name</td>
       <td>Type</td>
@@ -21,7 +21,7 @@
       <td>{{getType(ingredient.type)}}</td>
       <td>{{ingredient.vegetarian}}</td>
       <td>{{ingredient.vegan}}</td>
-      <td><button (click)=deleteIngredient(ingredient.id)>Delete</button></td>
+      <td><i class="fa-solid fa-trash" id ="deleteIcon"(click)=deleteIngredient(ingredient.id)></i></td>
     </tr>
   </table>
 </div>

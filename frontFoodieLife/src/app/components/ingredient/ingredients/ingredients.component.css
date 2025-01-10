@@ -19,7 +19,10 @@ table.ingredients {
   border: 0.1rem solid var(--secondaryColor);
   width: 100%;
 }
-
+tr#header{
+  background-color: var(--secondaryColor);
+  font-weight: bold;
+}
 table.ingredients tr:nth-child(even) {
   background-color: var(--tableColor);
 }

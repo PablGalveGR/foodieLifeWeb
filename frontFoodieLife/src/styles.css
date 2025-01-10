@@ -26,4 +26,13 @@ div.mainContent{
   margin-right: 10%;
   margin-top: 1%;
 }
+/*Icons Styles*/
+i#deleteIcon{
+  padding: 0.4rem;
+}
+i#deleteIcon:hover{
+  color: red;
+  background-color: black;
+  border-radius: 0.5rem;
+}
 

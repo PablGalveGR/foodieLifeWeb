@@ -18,10 +18,25 @@ export class RecipeService {
   }
   getXRecipes(ids: number[]): Observable<Recipe[]> {
     let returnedRecipes: Recipe[] = [];
+    let noRecipes: Recipe[] = [{
+      id: 0,
+      name: 'No recipes Found',
+      description: 'The are no recipes saved in the system',
+      ingredients: [],
+      steps: []
+    }]
     for (let id of ids) {
-      returnedRecipes.push(this.recipes.find(rec => rec.id == id)!);
+      let recipe = this.recipes.find(rec => rec.id == id);
+      if (recipe != undefined) {
+        returnedRecipes.push(recipe);
+      }
     }
-    return of(returnedRecipes);
+    if (returnedRecipes.length == 0) {
+      return of(noRecipes);
+    }
+    else {
+      return of(returnedRecipes);
+    }
   }
   getRecipe(id: number): Observable<Recipe> {
     return of(recipes.find(r => r.id == id)!);

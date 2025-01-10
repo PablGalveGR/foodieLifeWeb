@@ -1,7 +1,7 @@
 <div class="mainContent">
-    <h2 class="ListTitle">Recipes <button (click) ="goToAdd()">Add</button></h2>
-    <table class="recipes" *ngIf = "recipes != undefined && recipes.length > 0">
-        <tr>
+    <h2 class="ListTitle">Recipes <button (click)="goToAdd()">Add</button></h2>
+    <table class="recipes" *ngIf="recipes != undefined && recipes.length > 0">
+        <tr id="header">
             <td>ID</td>
             <td>Name</td>
             <td>Ingredients</td>
@@ -10,14 +10,14 @@
             <td>Vegan</td>
             <td>Delete</td>
         </tr>
-        <tr class="recipe" *ngFor = "let recipe of recipes" (click)="goToDetail(recipe.id)">
+        <tr class="recipe" *ngFor="let recipe of recipes" (click)="goToDetail(recipe.id)">
             <td>{{recipe.id}}</td>
             <td>{{recipe.name}}</td>
             <td>{{getNumberOfIngredients(recipe.id)}}</td>
             <td>{{getNumberOfSteps(recipe.id)}}</td>
             <td>{{getItsVegeterianVegan(recipe.ingredients)[0]}}</td>
             <td>{{getItsVegeterianVegan(recipe.ingredients)[1]}}</td>
-            <td><button (click) = "deleteRecipe(recipe.id)">Delete</button></td>
+            <td><i class="fa-solid fa-trash" id="deleteIcon" (click)="deleteRecipe(recipe.id)"></i></td>
         </tr>
     </table>
 </div>

@@ -18,26 +18,34 @@
         <p>{{ingredient.description}}</p>
       </div>
     </div>
-    
-    
     <button class="editButton" (click)="changeEdit()" *ngIf="!edit">Edit</button>
   </div>
   <!--Edit ingredient -->
-  <div class="ingredientEditForm" *ngIf=" edit && ingredientToEdit ">
-    <label for="ingredient-name">Name</label>
-    <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}} [(ngModel)]=ingredientToEdit.name>
-    <label for="ingredient-type">Type</label>
-    <select name="ingredient-type" id="" [(ngModel)]=ingredientToEdit.type>
-      <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
-    </select>
-    <label for="ingredient-description">Description</label>
-    <input type="text" name="ingredient-description" placeholder={{ingredientToEdit.description}}
-      [(ngModel)]=ingredientToEdit.description>
-    <label for="ingredient-vegetarian">Vegetarian</label>
-    <input name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredientToEdit.vegetarian>
-    <label for="ingredient-vegan">Vegan</label>
-    <input name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
-    <button (click)="saveUpdateIngredient(ingredientToEdit)">Save</button><button
-      (click)="changeEdit()">Cancel</button>
+  <div class="ingredientDetailContainer" *ngIf=" edit && ingredientToEdit ">
+    <div class="row1">
+      <div class="nameContainer">
+        <h3>Name</h3>
+        <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}}
+          [(ngModel)]=ingredientToEdit.name>
+      </div>
+      <div class="typeContainer">
+        <h3>Type</h3>
+        <select name="ingredient-type" id="" [(ngModel)]=ingredientToEdit.type>
+          <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="descContainer">
+        <h3>Description</h3>
+        <textarea type="text" name="ingredient-description" placeholder={{ingredientToEdit.description}}
+          [(ngModel)]=ingredientToEdit.description></textarea>
+      </div>
+        <h3>Vegetarian</h3>
+        <input name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredientToEdit.vegetarian>
+        <h3>Vegan</h3>
+        <input name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
+    </div>
+    <button (click)="saveUpdateIngredient(ingredientToEdit)">Save</button><button (click)="changeEdit()">Cancel</button>
   </div>
 </div>
