@@ -2,6 +2,7 @@ div.recipesContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 div.recipesContainer div.recipeContainer {

@@ -8,21 +8,31 @@ import { Observable, of } from 'rxjs';
 })
 export class IngredientService {
 
-  constructor() {   }
-  ingredients : Ingredient[]  = ingredients;
-  ngOnInit(){
+  constructor() { }
+  ingredients: Ingredient[] = ingredients;
+  ngOnInit() {
     console.log("Service Ingredient Created");
   }
-  getIngredients() : Observable<Ingredient[]>{
+  getIngredients(): Observable<Ingredient[]> {
     return of(this.ingredients);
   }
-  getIngredient(id : number) : Observable<Ingredient>{
-    const ing = of(this.ingredients.find(i => i.id === id)!);
-    return ing;
+  getIngredient(id: number): Observable<Ingredient> {
+    let ing: Ingredient = this.ingredients.find(i => i.id == id)!;
+    if (ing == undefined) {
+      ing = {
+        id: 0, name: "Not Found", type: 2,
+        price: 2,
+        description: "Ingredient deleted",
+        vegetarian: false,
+        vegan: false,
+        measure: "Kg"
+      };
+    }
+    return of(ing);
   }
-  saveUpdatedIngredient(ing : Ingredient){
-    for( let i = 0; i < this.ingredients.length; i++){
-      if(this.ingredients[i].id === ing.id){
+  saveUpdatedIngredient(ing: Ingredient) {
+    for (let i = 0; i < this.ingredients.length; i++) {
+      if (this.ingredients[i].id === ing.id) {
         this.ingredients[i] = ing;
         break;
       }
@@ -30,18 +40,18 @@ export class IngredientService {
     console.log("Updated ingredient: " + JSON.stringify(ing));
     console.log("Updated ingredients list" + JSON.stringify(ingredients));
   }
-  saveIngredient( ing : Ingredient){
+  saveIngredient(ing: Ingredient) {
     this.ingredients.push(ing);
   }
-  deleteIngredient( id:number){
-    let index : number = this.ingredients.findIndex( i => i.id == id);
-    console.log("Deleted ingredient: "+ JSON.stringify(this.ingredients[index]));
+  deleteIngredient(id: number) {
+    let index: number = this.ingredients.findIndex(i => i.id == id);
+    console.log("Deleted ingredient: " + JSON.stringify(this.ingredients[index]));
     this.ingredients.splice(index, 1);
   }
-  getLastId() : number{
-    return this.ingredients[ this.ingredients.length -1].id;
+  getLastId(): number {
+    return this.ingredients[this.ingredients.length - 1].id;
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     console.log("Service Ingredients Killed");
   }
 }

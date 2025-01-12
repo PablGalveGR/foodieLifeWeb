@@ -8,7 +8,7 @@
   <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
     <h3 class="ingredientsTitle">Ingredients</h3>
     <table class="ingredients">
-      <tr>
+      <tr id="header">
         <td>Name</td>
         <td>Type</td>
         <td>Vegetarian</td>
@@ -26,14 +26,14 @@
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
-        <td><button (click)="deleteIngredient(ingredient.id)">Delete</button></td>
+        <td><i class="fa-solid fa-trash" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
     <input type="text" #filter>
     <button (click)="filterBy(filter.value)">Search</button>
     <button (click)="clearFilter()">Clear</button>
     <table class="ingredients">
-      <tr>
+      <tr id="header">
         <td>Name</td>
         <td>Type</td>
         <td>Vegetarian</td>
@@ -45,7 +45,7 @@
         <td>{{getType(ingredient.type)}}</td>
         <td>{{ingredient.vegetarian}}</td>
         <td>{{ingredient.vegan}}</td>
-        <td><button (click)="addIngredient(ingredient.id)">Add</button></td>
+        <td><i class="fas fa-plus-square" id="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
   </div>

@@ -28,12 +28,12 @@
   <label for="recipeName">Name:</label><br>
   <input type="text" name="recipeName" [(ngModel)]="recipeToEdit.name"><br>
   <label for="recipeDesc">Description</label><br>
-  <textarea name="recipeDesc" [(ngModel)]=recipeToEdit.description></textarea>
-  <!--Ingredients-->
+  <textarea name="recipeDesc" rows="7" placeholder={{recipeToEdit.description}}
+    [(ngModel)]=recipeToEdit.description></textarea>
   <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
     <h3 class="ingredientsTitle">Ingredients</h3>
     <table class="ingredients">
-      <tr>
+      <tr id="header">
         <td>Name</td>
         <td>Type</td>
         <td>Vegetarian</td>
@@ -51,14 +51,17 @@
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
-        <td><button (click)="deleteIngredient(ingredient.id)">Delete</button></td>
+        <td><i class="fa-solid fa-trash" id ="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
-    <input type="text" #filter>
-    <button (click)="filterBy(filter.value)">Search</button>
-    <button (click)="clearFilter()">Clear</button>
+    <div class="searchBar">
+      <input class="bar" type="text" (keyup.enter)="filterBy(filter.value)" #filter>
+      <i class="fas fa-search" (click)="filterBy(filter.value)"></i>
+      <i class="fas fa-eraser" (click)="clearFilter()"></i>
+    </div>
+
     <table class="ingredients">
-      <tr>
+      <tr id="header">
         <td>Name</td>
         <td>Type</td>
         <td>Vegetarian</td>
@@ -70,7 +73,7 @@
         <td>{{getType(ingredient.type)}}</td>
         <td>{{ingredient.vegetarian}}</td>
         <td>{{ingredient.vegan}}</td>
-        <td><button (click)="addIngredient(ingredient.id)">Add</button></td>
+        <td><i class="fas fa-plus-square" id ="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
   </div>

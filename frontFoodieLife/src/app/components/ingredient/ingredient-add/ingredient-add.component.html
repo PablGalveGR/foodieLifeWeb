@@ -1,5 +1,6 @@
 <div class="mainContent">
   <div class="ingredientContainer">
+    <h2>Add ingredient</h2>
     <div class="row1">
       <div class="nameContainer">
         <h3>Name</h3>
@@ -18,10 +19,16 @@
         <textarea type="text" name="ingredient-description" placeholder={{ingredient.description}}
           [(ngModel)]=ingredient.description></textarea>
       </div>
-      <h3>Vegetarian</h3>
-      <input name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredient.vegetarian>
-      <h3>Vegan</h3>
-      <input name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredient.vegan>
+    </div>
+    <div class="row3">
+      <div class="veggie">
+        <h3>Vegetarian</h3>
+        <input class="checkbox" name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredient.vegetarian>
+      </div>
+      <div class="vegan">
+        <h3>Vegan</h3>
+        <input class="checkbox" name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredient.vegan>
+      </div>
     </div>
     <button (click)="saveIngredient(ingredient)">Save</button>
     <button (click)="goBack()">Cancel</button>

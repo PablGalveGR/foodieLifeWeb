@@ -26,13 +26,70 @@ div.mainContent{
   margin-right: 10%;
   margin-top: 1%;
 }
-/*Icons Styles*/
-i#deleteIcon{
-  padding: 0.4rem;
+/*Search Bar*/
+div.searchBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
-i#deleteIcon:hover{
+div.searchBar input.bar{
+  flex: 5;
+}
+div.searchBar i{
+  margin: 0rem 0.25rem;
+}
+/*headers*/
+div.header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+div.header #deleteIcon{
+  background-color: var(--secondaryColor);
+  color: var(--contentBackgroundColor);
+  border: solid black 0.1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+div.header #deleteIcon:hover{
+  background-color: var(--contentBackgroundColor);
+  color: red;
+  cursor: pointer;
+  border-color: var(--secondaryColor);
+}
+/*Icons Styles*/
+i{
+  background-color: var(--secondaryColor);
+  color: var(--contentBackgroundColor);
+  border: solid black 0.1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+i:hover{
+  background-color: var(--contentBackgroundColor);
+  color: var(--secondaryColor);
+  cursor: pointer;
+  border-color: var(--secondaryColor);
+}
+#deleteIcon:hover{
   color: red;
   background-color: black;
   border-radius: 0.5rem;
+}
+/*tables*/
+table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid var(--secondaryColor);
+  width: 100%;
+}
+tr#header{
+  background-color: var(--secondaryColor);
+  font-weight: bold;
+}
+table tr:nth-child(even) {
+  background-color: var(--tableColor);
 }
 

@@ -21,20 +21,6 @@ div.recipeAddContainer h4 {
 
 /*Ingredients*/
 /*tables*/
-table.ingredients {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0.1rem solid var(--secondaryColor);
-}
-
-table.ingredients tr:nth-child(even) {
-  background-color: var(--tableColor);
-}
-
-table.ingredients tr.ingredient:hover {
-  background-color: var(--tableHightLightColor)
-}
-
 table.ingredients td {
   padding: 0.5rem;
   border: none;

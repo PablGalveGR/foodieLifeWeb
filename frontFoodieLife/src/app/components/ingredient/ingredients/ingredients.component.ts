@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ingredient } from '../Ingredient';
 import { IngredientService } from '../../../services/ingredient/ingredient.service';
@@ -41,11 +41,15 @@ export class IngredientsComponent {
     console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered));
     console.log("No Filtered :" + JSON.stringify(this.ingredients));
   }
-  clearFilter() {
+  clearFilter(filter? : HTMLInputElement) {
     this.ingredientsFiltered = Object.assign(this.ingredients);
+    if(filter){
+      filter.value = "";
+    }
   }
   deleteIngredient(id: number) {
     this.ingredientService.deleteIngredient(id);
+
   }
   goToAdd() {
     this.router.navigate(['/ingredients/ingredient/add']);

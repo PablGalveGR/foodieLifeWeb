@@ -12,26 +12,28 @@ div.mainContent h4 {
 }
 
 /*Ingredient*/
-.ingredientDetailContainer {
+.ingredientContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.row1 {
+.row1, .row3 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-bottom: 0.05rem var(--secondaryColor) dashed;
+  border-bottom: 0.15rem var(--secondaryColor) dashed;
   padding-bottom: 0.5rem;
 }
-
-.nameContainer {
+.nameContainer, div.veggie {
   flex: 3;
 }
 
-.typeContainer {
+.typeContainer, div.vegan {
   flex: 2;
+}
+.checkbox{
+  margin: 1rem;
 }
 
 .nameContainer h3,
