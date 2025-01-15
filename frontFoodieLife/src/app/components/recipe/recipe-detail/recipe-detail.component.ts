@@ -28,17 +28,23 @@ export class RecipeDetailComponent {
     private router: Router) { }
   recipe: Recipe = {
     id: 0,
-    name: '',
-    description: '',
-    ingredients: [],
-    steps: []
+        name: '',
+        description: '',
+        ingredients: [],
+        steps: [],
+        difficulty:0,
+        picture:'',
+        price:0
   };
   recipeToEdit: Recipe = {
     id: 0,
-    name: '',
-    description: '',
-    ingredients: [],
-    steps: []
+        name: '',
+        description: '',
+        ingredients: [],
+        steps: [],
+        difficulty:0,
+        picture:'',
+        price:0
   };
   ingredientsRecipe: Ingredient[] = [];
   ingredientsFiltered: Ingredient[] = [];
@@ -93,7 +99,10 @@ export class RecipeDetailComponent {
         name: '',
         description: '',
         ingredients: [],
-        steps: []
+        steps: [],
+        difficulty:0,
+        picture:'',
+        price:0
       };
     }
   }

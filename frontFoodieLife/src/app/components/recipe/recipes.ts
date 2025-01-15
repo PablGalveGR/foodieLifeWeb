@@ -31,7 +31,10 @@ export let recipes: Recipe[] = [
             order: 2,
             title: "Boling",
             body: "Boil the ingredients"
-        }]
+        }],
+        difficulty: 0,
+        picture: "",
+        price: 0
     },
     {
         id: 1,
@@ -63,7 +66,10 @@ export let recipes: Recipe[] = [
             order: 2,
             title: "Boling",
             body: "Boil the ingredients"
-        }]
+        }],
+        difficulty: 0,
+        picture: "",
+        price: 0
     },
     {
         id: 2,
@@ -95,6 +101,44 @@ export let recipes: Recipe[] = [
             order: 2,
             title: "Boling",
             body: "Boil the ingredients"
-        }]
+        }],
+        difficulty: 0,
+        picture: "",
+        price: 0
+    },
+    {
+        id: 3,
+        name: "Test4",
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
+        ingredients: [{
+            id: 0,
+            quantity: 200
+        },
+        {
+            id: 1,
+            quantity: 6
+        },
+        {
+            id: 2,
+            quantity: 77
+        },
+        ],
+        steps: [{
+            id: 0,
+            idRecipe: 0,
+            order: 1,
+            title: "Ingredient treatment",
+            body: "Clean an cut the ingredients"
+        },
+        {
+            id: 1,
+            idRecipe: 0,
+            order: 2,
+            title: "Boling",
+            body: "Boil the ingredients"
+        }],
+        difficulty: 0,
+        picture: "",
+        price: 0
     }
 ]

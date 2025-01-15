@@ -15,8 +15,12 @@ import { IngredientQuantity } from '../IngredientQuantity';
 export class RecipesComponent {
   constructor( private recipeService: RecipeService, private router :Router){}
   recipes?: Recipe[];
+  boxView: boolean = true;
   ngOnInit(){
     this.getRecipes();
+  }
+  changeView(){
+    this.boxView = !this.boxView;
   }
   getRecipes(){
     this.recipeService.getRecipes().subscribe(r => this.recipes = r);

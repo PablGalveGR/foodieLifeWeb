@@ -29,10 +29,13 @@ export class RecipeAddComponent {
     private location: Location) { }
   recipe: Recipe = {
     id: 0,
-    name: '',
-    description: '',
-    ingredients: [],
-    steps: []
+        name: '',
+        description: '',
+        ingredients: [],
+        steps: [],
+        difficulty:0,
+        picture:'',
+        price:0
   };
   ingredientsRecipe: Ingredient[] = [];
   ingredientsFiltered: Ingredient[] = [];

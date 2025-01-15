@@ -6,5 +6,8 @@ export interface Recipe {
   name: string,
   description: string,
   ingredients: IngredientQuantity[],
-  steps: Step[]
+  steps: Step[],
+  difficulty: number,
+  picture : string,
+  price: number
 }

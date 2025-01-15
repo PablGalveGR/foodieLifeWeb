@@ -36,3 +36,31 @@ table.recipes td {
   padding: 0.5rem;
   border: none;
 }
+/*Box View*/
+div.boxView {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.boxView div.recipeContainer {
+  background-color: var(--contentBackgroundColor);
+  border: 0.1rem, solid, var(--secondaryColor);
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+div.boxView div.recipeContainer * {
+  padding: 0.2rem;
+}
+
+div.boxView div.recipeContainer:hover {
+  border: 0.1rem solid greenyellow;
+  cursor: pointer;
+}
+
+div.boxView div.recipeContainer h2.recipeName {
+  font-size: 2rem;
+}

@@ -13,6 +13,11 @@ export class RecipeService {
 
   constructor(private ingredientService: IngredientService) { }
   recipes = recipes;
+  ngOninit(){
+    for(let i = 0; i<this.recipes.length;i++){
+      this.recipes[i].price = this.recipePrice(this.recipes[i].id);
+    }
+  }
   getRecipes(): Observable<Recipe[]> {
     return of(this.recipes);
   }
@@ -23,7 +28,10 @@ export class RecipeService {
       name: 'No recipes Found',
       description: 'The are no recipes saved in the system',
       ingredients: [],
-      steps: []
+      steps: [],
+      difficulty: 0,
+      picture: '',
+      price: 0
     }]
     for (let id of ids) {
       let recipe = this.recipes.find(rec => rec.id == id);
@@ -101,5 +109,34 @@ export class RecipeService {
       }
     }
     return [veggie, vegan];
+  }
+  recipePrice(id:number){
+    let total = 0;
+    let recipe : Recipe = {
+      id: 0,
+      name: '',
+      description: '',
+      ingredients: [],
+      steps: [],
+      difficulty: 0,
+      picture: '',
+      price: 0
+    }; 
+    this.getRecipe(id).subscribe( r => recipe = r);
+    for(let ing of recipe.ingredients){
+      let ingredient : Ingredient = {
+        id: 0,
+        name: '',
+        type: 0,
+        price: 0,
+        description: '',
+        vegetarian: false,
+        vegan: false,
+        measure: ''
+      };
+      this.ingredientService.getIngredient(ing.id).subscribe(i => ingredient = i);
+      total += (ingredient.price * ing.quantity);
+    }
+    return total;
   }
 }
