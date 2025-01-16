@@ -17,6 +17,10 @@
         <h3>Type</h3>
         <p>{{getType(ingredient.type)}}</p>
       </div>
+      <div class="priceContainer">
+        <h3>Price</h3>
+        <p>{{ingredient.price}}</p>
+      </div>
     </div>
     <div class="row2">
       <div class="descContainer">
@@ -39,6 +43,10 @@
         <select name="ingredient-type" id="" [(ngModel)]=ingredientToEdit.type>
           <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
         </select>
+      </div>
+      <div class="priceContainer">
+        <h3>Price</h3>
+        <input type="number" [(ngModel)] ="ingredientToEdit.price">
       </div>
     </div>
     <div class="row2">

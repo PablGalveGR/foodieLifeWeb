@@ -3,6 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { RecipeService } from './services/recipe/recipe.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { getAnalytics } from "firebase/analytics";
 })
 export class AppComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private recipeService :RecipeService) { }
   firebaseConfig = {
     apiKey: "AIzaSyBikdJPbVXmRCpak-vOnNQjFYABZOnImUo",
     authDomain: "foddielife.firebaseapp.com",
@@ -26,6 +27,9 @@ export class AppComponent {
   app = initializeApp(this.firebaseConfig);
   analytics = getAnalytics(this.app);
   title = 'FoodieLife';
+  ngOnInit(){
+    this.recipeService.setRecipePrices();
+  }
   goTo(url: string) {
     this.router.navigate([url]);
   }

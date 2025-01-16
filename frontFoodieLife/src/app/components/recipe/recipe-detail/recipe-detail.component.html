@@ -1,5 +1,22 @@
 <div class="mainContent" *ngIf=" recipe != undefined && !edit">
-  <h2 class="recipeName">{{recipe.name}}<button (click)="changeEdit()" class="editRecipe">Edit</button></h2>
+  <div class="header">
+    <h2 class="recipeName">{{recipe.name}}</h2>
+    <div class="detailButtons">
+      <i class="fas fa-edit" (click)="changeEdit()" id="editIcon" *ngIf="!edit"></i>
+      <i class="fa-solid fa-trash" id="deleteIcon" (click)=deleteRecipe(recipe.id)></i>
+    </div>
+  </div>
+  <div class="veggieVegan">
+    <div class="vegan" *ngIf="getItsVegeterianVegan(recipe.ingredients)[1]">
+      <i class="fa-solid fa-leaf"></i>
+      <p>Vegan</p>
+    </div>
+    <div class="veggie"
+      *ngIf="getItsVegeterianVegan(recipe.ingredients)[0] && !getItsVegeterianVegan(recipe.ingredients)[1]">
+      <i class="fa-solid fa-leaf"></i>
+      <p>Veggie</p>
+    </div>
+  </div>
   <p>{{recipe.description}}</p>
   <!--Ingredients-->
   <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
@@ -51,7 +68,7 @@
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
-        <td><i class="fa-solid fa-trash" id ="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
+        <td><i class="fa-solid fa-trash" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
     <div class="searchBar">
@@ -73,7 +90,7 @@
         <td>{{getType(ingredient.type)}}</td>
         <td>{{ingredient.vegetarian}}</td>
         <td>{{ingredient.vegan}}</td>
-        <td><i class="fas fa-plus-square" id ="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
+        <td><i class="fas fa-plus-square" id="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
   </div>

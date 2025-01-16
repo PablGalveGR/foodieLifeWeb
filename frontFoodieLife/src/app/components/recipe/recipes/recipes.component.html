@@ -1,8 +1,9 @@
 <div class="mainContent">
   <div class="header">
     <h2 class="ListTitle">Recipes</h2>
-    <i class="fas fa-plus-square" id="addIcon" (click)=goToAdd()> Add</i>
     <button (click)=" changeView()">Change View</button>
+    <i class="fas fa-plus-square" id="addIcon" (click)=goToAdd()> Add</i>
+
   </div>
   <table class="recipes" *ngIf="recipes != undefined && recipes.length > 0 && !boxView">
     <tr id="header">
@@ -24,10 +25,24 @@
       <td><i class="fa-solid fa-trash" id="deleteIcon" (click)="deleteRecipe(recipe.id)"></i></td>
     </tr>
   </table>
-  <div class="boxView" *ngIf = "boxView">
+  <div class="boxView" *ngIf="boxView">
     <div class="recipeContainer" *ngFor=" let recipe of recipes" (click)="goToDetail(recipe.id)">
       <h2 class="recipeName">{{recipe.name}}</h2>
+      <div class="veggieVegan">
+        <div class="vegan" *ngIf="getItsVegeterianVegan(recipe.ingredients)[1]">
+          <i class="fa-solid fa-leaf"></i>
+          <p>Vegan</p>
+        </div>
+        <div class="veggie" *ngIf="getItsVegeterianVegan(recipe.ingredients)[0] && !getItsVegeterianVegan(recipe.ingredients)[1]">
+          <i class="fa-solid fa-leaf"></i>
+          <p>Veggie</p>
+        </div>
+      </div>
       <p>{{recipe.description}}</p>
+      <div class="bottom">
+        <p>Difficulty : {{recipe.difficulty}}</p>
+        <p>Price {{recipe.price}}€</p>
+      </div>
     </div>
   </div>
 </div>

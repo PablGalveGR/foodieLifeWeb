@@ -13,11 +13,6 @@ export class RecipeService {
 
   constructor(private ingredientService: IngredientService) { }
   recipes = recipes;
-  ngOninit(){
-    for(let i = 0; i<this.recipes.length;i++){
-      this.recipes[i].price = this.recipePrice(this.recipes[i].id);
-    }
-  }
   getRecipes(): Observable<Recipe[]> {
     return of(this.recipes);
   }
@@ -109,6 +104,11 @@ export class RecipeService {
       }
     }
     return [veggie, vegan];
+  }
+  setRecipePrices(){
+    for(let i = 0; i<this.recipes.length;i++){
+      this.recipes[i].price = this.recipePrice(this.recipes[i].id);
+    }
   }
   recipePrice(id:number){
     let total = 0;

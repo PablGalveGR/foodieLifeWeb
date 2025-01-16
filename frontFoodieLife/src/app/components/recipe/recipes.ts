@@ -7,15 +7,15 @@ export let recipes: Recipe[] = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 0,
-            quantity: 200
+            quantity: 1
         },
         {
-            id: 1,
+            id: 3,
             quantity: 6
         },
         {
             id: 2,
-            quantity: 77
+            quantity: 4
         },
         ],
         steps: [{
@@ -41,16 +41,16 @@ export let recipes: Recipe[] = [
         name: "Test2",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
-            id: 0,
-            quantity: 200
+            id: 4,
+            quantity: 2
         },
         {
             id: 1,
-            quantity: 6
+            quantity: 5
         },
         {
-            id: 2,
-            quantity: 77
+            id: 0,
+            quantity: 3
         },
         ],
         steps: [{
@@ -77,15 +77,15 @@ export let recipes: Recipe[] = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 0,
-            quantity: 200
+            quantity: 0.5
         },
         {
             id: 1,
             quantity: 6
         },
         {
-            id: 2,
-            quantity: 77
+            id: 4,
+            quantity: 4
         },
         ],
         steps: [{
@@ -111,8 +111,8 @@ export let recipes: Recipe[] = [
         name: "Test4",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
-            id: 0,
-            quantity: 200
+            id: 3,
+            quantity: 3
         },
         {
             id: 1,
@@ -120,7 +120,7 @@ export let recipes: Recipe[] = [
         },
         {
             id: 2,
-            quantity: 77
+            quantity: 1.5
         },
         ],
         steps: [{

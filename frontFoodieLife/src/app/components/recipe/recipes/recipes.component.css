@@ -42,11 +42,14 @@ div.boxView {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 div.boxView div.recipeContainer {
   background-color: var(--contentBackgroundColor);
   border: 0.1rem, solid, var(--secondaryColor);
+  flex:25%;
+  flex-grow: 1;
   border-radius: 0.5rem;
   margin: 1rem;
   padding: 1rem;

@@ -85,6 +85,10 @@ export class RecipeDetailComponent {
     quantity = this.recipeToEdit.ingredients.find(i => i.id == id)!.quantity;
     return quantity;
   }
+  deleteRecipe(id:number){
+    this.recipeService.deleteRecipe(id);
+    this.router.navigate(["/recipes"]);
+  }
   changeEdit() {
     this.edit = !this.edit;
     if (this.edit) {

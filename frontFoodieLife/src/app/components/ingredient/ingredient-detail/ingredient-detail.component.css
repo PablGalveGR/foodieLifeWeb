@@ -47,7 +47,8 @@ div.mainContent h4 {
 }
 .nameContainer h3,
 .typeContainer h3,
-.descContainer h3 {
+.descContainer h3,
+.priceContainer h3 {
   margin-bottom: 1rem;
 }
 textarea{
