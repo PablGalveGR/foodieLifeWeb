@@ -1,32 +1,21 @@
 /*Ingredients*/
-h2.ListTitle{
+h2.ListTitle {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
+
 /*Search Bar*/
-div.searchBar{
+div.searchBar {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
-div.searchBar input.bar{
+
+div.searchBar input.bar {
   flex: 5;
 }
-/*tables*/
-table.recipes {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0.1rem solid var(--secondaryColor);
-  width: 100%;
-}
-tr#header{
-  background-color: var(--secondaryColor);
-  font-weight: bold;
-}
-table.recipes tr:nth-child(even) {
-  background-color: var(--tableColor);
-}
 
+/*tables*/
 table.recipes tr.recipe:hover {
   background-color: var(--tableHightLightColor);
   cursor: pointer;
@@ -36,6 +25,7 @@ table.recipes td {
   padding: 0.5rem;
   border: none;
 }
+
 /*Box View*/
 div.boxView {
   display: flex;
@@ -48,7 +38,7 @@ div.boxView {
 div.boxView div.recipeContainer {
   background-color: var(--contentBackgroundColor);
   border: 0.1rem, solid, var(--secondaryColor);
-  flex:25%;
+  flex: 25%;
   flex-grow: 1;
   border-radius: 0.5rem;
   margin: 1rem;
@@ -58,7 +48,11 @@ div.boxView div.recipeContainer {
 div.boxView div.recipeContainer * {
   padding: 0.2rem;
 }
-
+div.boxHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 div.boxView div.recipeContainer:hover {
   border: 0.1rem solid greenyellow;
   cursor: pointer;
@@ -66,4 +60,16 @@ div.boxView div.recipeContainer:hover {
 
 div.boxView div.recipeContainer h2.recipeName {
   font-size: 2rem;
+}
+
+div.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.bottom p.difficulty,
+div.bottom p.price {
+  font-weight: bolder;
+  font-size: 1.2rem;
 }

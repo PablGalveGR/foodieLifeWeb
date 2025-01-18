@@ -1,16 +1,3 @@
-div.mainContent div {
-  padding: 0.5rem;
-}
-
-div.mainContent p {
-  padding: 0.5rem;
-  padding-bottom: 2rem;
-}
-
-p.stepBody {
-  padding: 0.5rem;
-}
-
 /*Titles*/
 h2.recipeName {
   font-size: 2rem;
@@ -40,10 +27,12 @@ div.ingredientsContainer ul {
   min-width: fit-content;
   max-width: 25%;
 }
-div.ingredientsContainer ul li{
+
+div.ingredientsContainer ul li {
   padding: 0.25rem;
   margin: 0.15rem;
 }
+
 div.ingredientsContainer ul li:hover {
   border-radius: 0.5rem;
   background-color: var(--tableHightLightColor);
@@ -56,9 +45,20 @@ div.stepsContainer h3.stepsTitle {
   border-top: 0.15rem dashed var(--tableHightLightColor);
 }
 
+p.stepBody {
+  padding: 0.5rem;
+}
+
 div.stepsContainer ol.stepsList {
   padding-left: 2rem;
 }
+/*ingredient Vegan icons*/
+div.ingredientsContainer i#veggieIcon,
+div.ingredientsContainer i#veganIcon {
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
 /*Edit Recipe*/
 /*Ingredients*/
 /*tables*/

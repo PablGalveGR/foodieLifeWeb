@@ -21,7 +21,7 @@ html{
 /*Main Content Styles*/
 div.mainContent{
   background-color: var(--contentBackgroundColor);
-  padding: 2rem;
+  padding: 1rem;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 1%;
@@ -59,7 +59,7 @@ div.header #deleteIcon:hover{
   border-color: var(--secondaryColor);
 }
 /*Icons Styles*/
-i{
+i.button{
   background-color: var(--secondaryColor);
   color: var(--contentBackgroundColor);
   border: solid black 0.1rem;
@@ -67,7 +67,7 @@ i{
   padding: 0.5rem;
   font-size: 1.25rem;
 }
-i:hover{
+i.button:hover{
   background-color: var(--contentBackgroundColor);
   color: var(--secondaryColor);
   cursor: pointer;
@@ -77,11 +77,30 @@ i:hover{
   color: red;
   background-color: black;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
+i#veggieIcon{
+  color: greenyellow;
+  background-color: var(--contentBackgroundColor);
+  border: dashed greenyellow 0.1rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  cursor: auto;
+}
+i#veganIcon:hover i#veggieIcon, i#veganIcon{
+  background-color: var(--contentBackgroundColor);
+  color: var(--secondaryColor);
+  border: solid var(--secondaryColor) 0.1rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  cursor: auto;
+}
+
 /*tables*/
 table {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   border: 0.1rem solid var(--secondaryColor);
   width: 100%;
 }
@@ -91,5 +110,11 @@ tr#header{
 }
 table tr:nth-child(even) {
   background-color: var(--tableColor);
+}
+/*TexAreas*/
+textarea{
+  width: 100%;
+  border-radius: 0.25rem;
+  border: solid 0.025rem var(--secondaryColor);
 }
 

@@ -137,6 +137,6 @@ export class RecipeService {
       this.ingredientService.getIngredient(ing.id).subscribe(i => ingredient = i);
       total += (ingredient.price * ing.quantity);
     }
-    return total;
+    return Math.round(total * 100) / 100;
   }
 }

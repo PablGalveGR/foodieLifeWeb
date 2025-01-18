@@ -1,21 +1,18 @@
 <div class="mainContent" *ngIf=" recipe != undefined && !edit">
   <div class="header">
     <h2 class="recipeName">{{recipe.name}}</h2>
+    <h2>{{recipe.price}}€</h2>
+    <div class="veggieVegan">
+      <i class="fa-solid fa-leaf" *ngIf="getItsVegeterianVegan(recipe.ingredients)[1]" id="veganIcon" title="Vegan"></i>
+      <i class="fa-solid fa-leaf"
+        *ngIf="getItsVegeterianVegan(recipe.ingredients)[0] && !getItsVegeterianVegan(recipe.ingredients)[1]"
+        id="veggieIcon" title="Vegetarian"></i>
+    </div>
     <div class="detailButtons">
-      <i class="fas fa-edit" (click)="changeEdit()" id="editIcon" *ngIf="!edit"></i>
-      <i class="fa-solid fa-trash" id="deleteIcon" (click)=deleteRecipe(recipe.id)></i>
+      <i class="fas fa-edit button" (click)="changeEdit()" id="editIcon" *ngIf="!edit"></i>
+      <i class="fa-solid fa-trash button" id="deleteIcon" (click)=deleteRecipe(recipe.id)></i>
     </div>
-  </div>
-  <div class="veggieVegan">
-    <div class="vegan" *ngIf="getItsVegeterianVegan(recipe.ingredients)[1]">
-      <i class="fa-solid fa-leaf"></i>
-      <p>Vegan</p>
-    </div>
-    <div class="veggie"
-      *ngIf="getItsVegeterianVegan(recipe.ingredients)[0] && !getItsVegeterianVegan(recipe.ingredients)[1]">
-      <i class="fa-solid fa-leaf"></i>
-      <p>Veggie</p>
-    </div>
+
   </div>
   <p>{{recipe.description}}</p>
   <!--Ingredients-->
@@ -23,7 +20,14 @@
     <h3 class="ingredientsTitle">Ingredients</h3>
     <ul *ngFor="let ingredient of ingredientsRecipe">
       <li (click)="goToIngredient(ingredient.id)">
-        {{ingredient.name}} <span>{{getRecipeIngredientQuantity(ingredient.id)}} {{ingredient.measure}}</span>
+        {{ingredient.name}}
+        <span>{{getRecipeIngredientQuantity(ingredient.id)}} {{ingredient.measure}}</span>
+        <span> {{getCost(getRecipeIngredientQuantity(ingredient.id), ingredient.price)}} € </span>
+        <span>
+          <i class="fa-solid fa-leaf" *ngIf="ingredient.vegan" id="veganIcon" title="Vegan"> </i>
+          <i class="fa-solid fa-leaf" *ngIf="ingredient.vegetarian && !ingredient.vegan" id="veggieIcon"
+            title="Vegetarian"> </i>
+        </span>
       </li>
     </ul>
   </div>
@@ -61,20 +65,34 @@
       <tr *ngFor=" let ingredient of ingredientsRecipe" class="ingredient">
         <td>{{ingredient.name}}</td>
         <td>{{getType(ingredient.type)}}</td>
-        <td>{{ingredient.vegetarian}}</td>
-        <td>{{ingredient.vegan}}</td>
+        <td>
+          <i class="fa-solid fa-check"
+          *ngIf="ingredient.vegetarian" 
+          title="Vegan"></i>
+          <i class="fa-solid fa-xmark"
+          *ngIf="!ingredient.vegetarian" 
+          title="Vegan"></i>
+        </td>
+        <td>
+          <i class="fa-solid fa-check"
+          *ngIf="ingredient.vegan" 
+          title="Vegan"></i>
+          <i class="fa-solid fa-xmark"
+          *ngIf="!ingredient.vegan" 
+          title="Vegan"></i>
+        </td>
         <td>
           <input type="number" value="{{getRecipeToEditIngredientQuantity(ingredient.id)}}"
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
-        <td><i class="fa-solid fa-trash" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
+        <td><i class="fa-solid fa-trash button" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
     <div class="searchBar">
       <input class="bar" type="text" (keyup.enter)="filterBy(filter.value)" #filter>
-      <i class="fas fa-search" (click)="filterBy(filter.value)"></i>
-      <i class="fas fa-eraser" (click)="clearFilter()"></i>
+      <i class="fas fa-search button" (click)="filterBy(filter.value)"></i>
+      <i class="fas fa-eraser button" (click)="clearFilter()"></i>
     </div>
 
     <table class="ingredients">
@@ -88,9 +106,23 @@
       <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
         <td>{{ingredient.name}}</td>
         <td>{{getType(ingredient.type)}}</td>
-        <td>{{ingredient.vegetarian}}</td>
-        <td>{{ingredient.vegan}}</td>
-        <td><i class="fas fa-plus-square" id="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
+        <td>
+          <i class="fa-solid fa-check"
+          *ngIf="ingredient.vegetarian" 
+          title="Vegan"></i>
+          <i class="fa-solid fa-xmark"
+          *ngIf="!ingredient.vegetarian" 
+          title="Vegan"></i>
+        </td>
+        <td>
+          <i class="fa-solid fa-check"
+          *ngIf="ingredient.vegan" 
+          title="Vegan"></i>
+          <i class="fa-solid fa-xmark"
+          *ngIf="!ingredient.vegan" 
+          title="Vegan"></i>
+        </td>
+        <td><i class="fas fa-plus-square button" id="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
   </div>
@@ -101,7 +133,7 @@
       <label for="steptitle">Tittle</label><br>
       <input type="text" name="stepTitle" [(ngModel)]=step.title><br>
       <label for="stepBody">Body</label><br>
-      <textarea name="stepBody" [(ngModel)]=step.body></textarea>
+      <textarea name="stepBody" [(ngModel)]=step.body rows="7"></textarea>
       <button (click)="deleteStep(step.id)">Delete</button>
     </div>
     <button (click)="addStepToRecipe()">Add step</button>

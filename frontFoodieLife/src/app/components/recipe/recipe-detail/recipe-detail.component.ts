@@ -28,23 +28,23 @@ export class RecipeDetailComponent {
     private router: Router) { }
   recipe: Recipe = {
     id: 0,
-        name: '',
-        description: '',
-        ingredients: [],
-        steps: [],
-        difficulty:0,
-        picture:'',
-        price:0
+    name: '',
+    description: '',
+    ingredients: [],
+    steps: [],
+    difficulty: 0,
+    picture: '',
+    price: 0
   };
   recipeToEdit: Recipe = {
     id: 0,
-        name: '',
-        description: '',
-        ingredients: [],
-        steps: [],
-        difficulty:0,
-        picture:'',
-        price:0
+    name: '',
+    description: '',
+    ingredients: [],
+    steps: [],
+    difficulty: 0,
+    picture: '',
+    price: 0
   };
   ingredientsRecipe: Ingredient[] = [];
   ingredientsFiltered: Ingredient[] = [];
@@ -85,7 +85,7 @@ export class RecipeDetailComponent {
     quantity = this.recipeToEdit.ingredients.find(i => i.id == id)!.quantity;
     return quantity;
   }
-  deleteRecipe(id:number){
+  deleteRecipe(id: number) {
     this.recipeService.deleteRecipe(id);
     this.router.navigate(["/recipes"]);
   }
@@ -104,9 +104,9 @@ export class RecipeDetailComponent {
         description: '',
         ingredients: [],
         steps: [],
-        difficulty:0,
-        picture:'',
-        price:0
+        difficulty: 0,
+        picture: '',
+        price: 0
       };
     }
   }
@@ -163,7 +163,8 @@ export class RecipeDetailComponent {
       idRecipe: 0,
       order: 0,
       title: '',
-      body: ''
+      body: '',
+      time: 0
     }
     if (this.recipeToEdit.steps.length != 0 || !this.recipeToEdit.steps == undefined) {
       const previousStep = this.recipeToEdit.steps[this.recipeToEdit.steps.length - 1];
@@ -178,7 +179,10 @@ export class RecipeDetailComponent {
     console.log("Deleted Step: " + JSON.stringify(this.recipeToEdit.steps[index]));
     this.recipeToEdit.steps.splice(index, 1);
   }
-  getItsVegeterianVegan(ings : IngredientQuantity[]) : boolean[]{
+  getItsVegeterianVegan(ings: IngredientQuantity[]): boolean[] {
     return this.recipeService.getItsVegeterianVegan(ings);
+  }
+  getCost(quant: number, price: number) {
+    return Math.round(quant * price * 100) / 100;
   }
 }

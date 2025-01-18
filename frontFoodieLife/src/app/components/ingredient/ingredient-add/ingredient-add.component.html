@@ -12,12 +12,16 @@
           <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
         </select>
       </div>
+      <div class="priceContainer">
+        <h3>Price</h3>
+        <input type="number" [(ngModel)] ="ingredient.price">
+      </div>
     </div>
     <div class="row2">
       <div class="descContainer">
         <h3>Description</h3>
         <textarea type="text" name="ingredient-description" placeholder={{ingredient.description}}
-          [(ngModel)]=ingredient.description></textarea>
+          [(ngModel)]=ingredient.description rows="7"></textarea>
       </div>
     </div>
     <div class="row3">
@@ -30,7 +34,9 @@
         <input class="checkbox" name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredient.vegan>
       </div>
     </div>
-    <button (click)="saveIngredient(ingredient)">Save</button>
-    <button (click)="goBack()">Cancel</button>
+    <div class="bottomButtons">
+      <i class="far fa-save button" (click)="saveIngredient(ingredient)"></i>
+      <i class="fas fa-window-close button" id=deleteIcon (click)="goBack()"></i>
+    </div>
   </div>
 </div>

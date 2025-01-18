@@ -23,14 +23,16 @@ export let recipes: Recipe[] = [
             idRecipe: 0,
             order: 1,
             title: "Ingredient treatment",
-            body: "Clean an cut the ingredients"
+            body: "Clean an cut the ingredients",
+            time: 0
         },
         {
             id: 1,
             idRecipe: 0,
             order: 2,
             title: "Boling",
-            body: "Boil the ingredients"
+            body: "Boil the ingredients",
+            time: 0
         }],
         difficulty: 0,
         picture: "",
@@ -58,14 +60,16 @@ export let recipes: Recipe[] = [
             idRecipe: 1,
             order: 1,
             title: "Ingredient treatment",
-            body: "Clean an cut the ingredients"
+            body: "Clean an cut the ingredients",
+            time: 0
         },
         {
             id: 1,
             idRecipe: 1,
             order: 2,
             title: "Boling",
-            body: "Boil the ingredients"
+            body: "Boil the ingredients",
+            time: 0
         }],
         difficulty: 0,
         picture: "",
@@ -93,14 +97,16 @@ export let recipes: Recipe[] = [
             idRecipe: 2,
             order: 1,
             title: "Ingredient treatment",
-            body: "Clean an cut the ingredients"
+            body: "Clean an cut the ingredients",
+            time: 0
         },
         {
             id: 1,
             idRecipe: 2,
             order: 2,
             title: "Boling",
-            body: "Boil the ingredients"
+            body: "Boil the ingredients",
+            time: 0
         }],
         difficulty: 0,
         picture: "",
@@ -128,14 +134,16 @@ export let recipes: Recipe[] = [
             idRecipe: 0,
             order: 1,
             title: "Ingredient treatment",
-            body: "Clean an cut the ingredients"
+            body: "Clean an cut the ingredients",
+            time: 0
         },
         {
             id: 1,
             idRecipe: 0,
             order: 2,
             title: "Boling",
-            body: "Boil the ingredients"
+            body: "Boil the ingredients",
+            time: 0
         }],
         difficulty: 0,
         picture: "",

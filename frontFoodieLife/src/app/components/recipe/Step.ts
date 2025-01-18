@@ -3,5 +3,6 @@ export interface Step{
  idRecipe: number,
  order: number,
  title : string,
- body : string
+ body : string,
+ time : number
 }

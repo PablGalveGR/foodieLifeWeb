@@ -1,13 +1,22 @@
 <div class="mainContent" *ngIf="ingredient">
   <div class="header">
     <h2>Ingredient</h2>
+    <div class="veggieVegan">
+      <i class="fa-solid fa-leaf" *ngIf="ingredient.vegetarian" id="veganIcon"
+        title="Vegan"></i>
+      <i class="fa-solid fa-leaf"
+        *ngIf="ingredient.vegetarian && !ingredient.vegan"
+        id="veggieIcon" title="Vegetarian"></i>
+    </div>
     <div class="detailButtons">
-      <i class="fas fa-edit" (click)="changeEdit()" id="editIcon" *ngIf="!edit"></i>
-      <i class="fa-solid fa-trash" id="deleteIcon" (click)=deleteIngredient(ingredient.id)></i>
+      <i class="fas fa-edit button" (click)="changeEdit()" 
+      id="editIcon" *ngIf="!edit"></i>
+      <i class="fa-solid fa-trash button" id="deleteIcon" 
+      (click)=deleteIngredient(ingredient.id)></i>
     </div>
   </div>
   <div class="ingredientDetailContainer" *ngIf="!edit">
-    <p>Veggie :{{ingredient.vegetarian}} Vegan :{{ingredient.vegan}}</p>
+    
     <div class="row1">
       <div class="nameContainer">
         <h3>Name</h3>
@@ -19,7 +28,7 @@
       </div>
       <div class="priceContainer">
         <h3>Price</h3>
-        <p>{{ingredient.price}}</p>
+        <p>{{ingredient.price}}€</p>
       </div>
     </div>
     <div class="row2">
@@ -35,13 +44,16 @@
     <div class="row1">
       <div class="nameContainer">
         <h3>Name</h3>
-        <input type="text" name="ingredient-name" placeholder={{ingredientToEdit.name}}
+        <input type="text" name="ingredient-name" 
+        placeholder={{ingredientToEdit.name}}
           [(ngModel)]=ingredientToEdit.name>
       </div>
       <div class="typeContainer">
         <h3>Type</h3>
-        <select name="ingredient-type" id="" [(ngModel)]=ingredientToEdit.type>
-          <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+        <select name="ingredient-type" 
+        [(ngModel)]=ingredientToEdit.type>
+          <option *ngFor="let type of types" 
+          value="{{type.id}}">{{type.name}}</option>
         </select>
       </div>
       <div class="priceContainer">
@@ -52,23 +64,29 @@
     <div class="row2">
       <div class="descContainer">
         <h3>Description</h3>
-        <textarea type="text" name="ingredient-description" rows="7" placeholder={{ingredientToEdit.description}}
-          [(ngModel)]=ingredientToEdit.description></textarea>
+        <textarea type="text" name="ingredient-description"
+         placeholder={{ingredientToEdit.description}}
+          [(ngModel)]=ingredientToEdit.description rows="7">
+        </textarea>
       </div>
     </div>
     <div class="row3">
       <div class="veggie">
         <h3>Vegetarian</h3>
-        <input class="checkbox" name="ingredient-vegetarian" type="checkbox" [(ngModel)]=ingredientToEdit.vegetarian>
+        <input class="checkbox" name="ingredient-vegetarian" 
+        type="checkbox" [(ngModel)]=ingredientToEdit.vegetarian>
       </div>
       <div class="vegan">
         <h3>Vegan</h3>
-        <input class="checkbox" name="ingredient-vegan" type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
+        <input class="checkbox" name="ingredient-vegan" 
+        type="checkbox" [(ngModel)]=ingredientToEdit.vegan>
       </div>
     </div>
     <div class="bottomButtons">
-      <i class="far fa-save" (click)="saveUpdateIngredient(ingredientToEdit)"></i>
-      <i class="fas fa-window-close" id=deleteIcon (click)="changeEdit()"></i>
+      <i class="far fa-save button" 
+      (click)="saveUpdateIngredient(ingredientToEdit)"></i>
+      <i class="fas fa-window-close button" id="deleteIcon"
+      (click)="changeEdit()"></i>
     </div>
   </div>
 </div>

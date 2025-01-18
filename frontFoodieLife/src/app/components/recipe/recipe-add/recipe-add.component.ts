@@ -114,7 +114,8 @@ export class RecipeAddComponent {
       idRecipe: 0,
       order: 0,
       title: '',
-      body: ''
+      body: '',
+      time: 0
     }
     if (this.recipe.steps.length != 0 || !this.recipe.steps == undefined) {
       const previousStep = this.recipe.steps[this.recipe.steps.length - 1];
