@@ -13,6 +13,7 @@
         <td>Type</td>
         <td>Vegetarian</td>
         <td>Vegan</td>
+        <td>Price</td>
         <td>Quantity</td>
         <td>Delete</td>
       </tr>
@@ -21,6 +22,7 @@
         <td>{{getType(ingredient.type)}}</td>
         <td>{{ingredient.vegetarian}}</td>
         <td>{{ingredient.vegan}}</td>
+        <td>{{ingredient.price}}</td>
         <td>
           <input type="number" value="{{getRecipeIngredientQuantity(ingredient.id)}}"
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>

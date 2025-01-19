@@ -143,6 +143,7 @@ export class RecipeDetailComponent {
   addIngredientQuantity(id: number, quant: string) {/// Adds the quantity of the given ingredient when focusout of the HTML's input
     let ing = this.recipeToEdit.ingredients.find(i => i.id == id)!;
     ing.quantity = Number(quant);
+    this.recipeToEdit.price = this.recipeService.recipePrice(this.recipeToEdit.id, this.recipeToEdit);
   }
   addIngredient(id: number) {
     let newIng: IngredientQuantity = { id: id, quantity: 0 };

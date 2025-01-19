@@ -53,11 +53,11 @@ export class RecipeService {
     return num;
   }
   saveRecipeUpdated(recipe: Recipe) {
-
     if (this.recipes.length != 0) {
       let index = this.recipes.findIndex(r => r.id == recipe.id)
       if (index != undefined) {
         this.recipes[index] = recipe;
+        this.recipePrice(recipe.id);
       }
     }
 
@@ -65,6 +65,7 @@ export class RecipeService {
   saveRecipe(recipe: Recipe) {
     recipe.id = this.getLastId() + 1;
     this.recipes.push(recipe);
+    this.recipePrice(recipe.id);
   }
   deleteRecipe(id: number) {
     let index = this.recipes.findIndex(r => r.id == id);
@@ -110,19 +111,22 @@ export class RecipeService {
       this.recipes[i].price = this.recipePrice(this.recipes[i].id);
     }
   }
-  recipePrice(id:number){
+  recipePrice(id:number , recipe_?: Recipe){
     let total = 0;
-    let recipe : Recipe = {
-      id: 0,
-      name: '',
-      description: '',
-      ingredients: [],
-      steps: [],
-      difficulty: 0,
-      picture: '',
-      price: 0
-    }; 
-    this.getRecipe(id).subscribe( r => recipe = r);
+    let recipe = recipe_!;
+    if(recipe == undefined){///If recipe not passed by parameter, look for it with the id
+      recipe = {
+        id: 0,
+        name: '',
+        description: '',
+        ingredients: [],
+        steps: [],
+        difficulty: 0,
+        picture: '',
+        price: 0
+      }; 
+      this.getRecipe(id).subscribe( r => recipe = r);
+    }      
     for(let ing of recipe.ingredients){
       let ingredient : Ingredient = {
         id: 0,

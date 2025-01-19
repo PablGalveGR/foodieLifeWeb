@@ -59,7 +59,9 @@
         <td>Type</td>
         <td>Vegetarian</td>
         <td>Vegan</td>
+        <td>Price</td>
         <td>Quantity</td>
+        <td>Total</td>
         <td>Delete</td>
       </tr>
       <tr *ngFor=" let ingredient of ingredientsRecipe" class="ingredient">
@@ -81,12 +83,18 @@
           *ngIf="!ingredient.vegan" 
           title="Vegan"></i>
         </td>
+        <td>{{ingredient.price}}</td>
         <td>
           <input type="number" value="{{getRecipeToEditIngredientQuantity(ingredient.id)}}"
             (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
+        <td>{{ingredient.price * getRecipeToEditIngredientQuantity(ingredient.id)}}</td>
         <td><i class="fa-solid fa-trash button" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
+      </tr>
+      <tr id="header">
+        <td colspan="6">Total</td>
+        <td colspan = "2"> {{recipeToEdit.price}}€</td>
       </tr>
     </table>
     <div class="searchBar">

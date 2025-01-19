@@ -18,6 +18,7 @@ export class RecipesComponent {
   boxView: boolean = true;
   ngOnInit(){
     this.getRecipes();
+    this.recipeService.setRecipePrices();
   }
   changeView(){
     this.boxView = !this.boxView;

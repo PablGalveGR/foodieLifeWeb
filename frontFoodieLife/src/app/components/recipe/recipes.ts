@@ -3,7 +3,7 @@ import { IngredientQuantity } from "./IngredientQuantity";
 export let recipes: Recipe[] = [
     {
         id: 0,
-        name: "Test1",
+        name: "Chicken Noodle Casserole",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 0,
@@ -40,7 +40,7 @@ export let recipes: Recipe[] = [
     },
     {
         id: 1,
-        name: "Test2",
+        name: "Tuna patties",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 4,
@@ -77,7 +77,7 @@ export let recipes: Recipe[] = [
     },
     {
         id: 2,
-        name: "Test3",
+        name: "Turkey stew",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 0,
@@ -114,7 +114,7 @@ export let recipes: Recipe[] = [
     },
     {
         id: 3,
-        name: "Test4",
+        name: "Onion Soup",
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
         ingredients: [{
             id: 3,
@@ -127,6 +127,39 @@ export let recipes: Recipe[] = [
         {
             id: 2,
             quantity: 1.5
+        },
+        ],
+        steps: [{
+            id: 0,
+            idRecipe: 0,
+            order: 1,
+            title: "Ingredient treatment",
+            body: "Clean an cut the ingredients",
+            time: 0
+        },
+        {
+            id: 1,
+            idRecipe: 0,
+            order: 2,
+            title: "Boling",
+            body: "Boil the ingredients",
+            time: 0
+        }],
+        difficulty: 0,
+        picture: "",
+        price: 0
+    },
+    {
+        id: 4,
+        name: "Cheese Potatoes",
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed eleifend mauris. Pellentesque convallis nulla augue, nec gravida mauris dignissim vel.',
+        ingredients: [{
+            id: 6,
+            quantity: 3
+        },
+        {
+            id: 1,
+            quantity: 6
         },
         ],
         steps: [{
