@@ -1,45 +1,20 @@
-div.recipesContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.postsContainer{
+  margin: 1rem 2rem;
 }
-
-div.recipesContainer div.recipeContainer {
+.post{
   background-color: var(--contentBackgroundColor);
   border: 0.1rem, solid, var(--secondaryColor);
   border-radius: 0.5rem;
-  margin: 1rem;
   padding: 1rem;
 }
-
-div.recipesContainer div.recipeContainer * {
-  padding: 0.2rem;
+h2.title{
+  font-size: 1.6rem;
+  border-bottom: 0.15rem dashed black;
+  margin-bottom: 0.5rem;
 }
-
-div.recipesContainer div.recipeContainer:hover {
-  border: 0.1rem solid greenyellow;
-  cursor: pointer;
+.post{
+  margin-bottom: 1rem;
 }
-
-div.recipesContainer div.recipeContainer h2.recipeName {
-  font-size: 2rem;
-}
-
-div.ingredientsContainer h3 {
-  font-size: 1.2rem;
-}
-ul{
-  max-width: 50%;
-}
-ul li {
-  padding-left: 2rem;
-  list-style-type: '- ';
-}
-
-ul li:hover {
-  border-radius: 0.5rem;
-  background-color: var(--tableHightLightColor);
-  color: white;
-  cursor: pointer;
+p{
+  font-size: 1rem;
 }

@@ -1,16 +1,77 @@
-<div class="recipesContainer">
-  <div class="recipeContainer" *ngFor=" let recipe of recipes" (click)="goToRecipe(recipe.id)">
-    <h2 class="recipeName">{{recipe.name}}</h2>
-    <p>{{recipe.description}}</p>
-    <!--Ingredients-->
-    <div class="ingredientsContainer">
-      <h3>Ingredients</h3>
-      <ul *ngFor="let ingredient of getRecipeIngredients(recipe.ingredients)">
-        <li (click)="goToIngredient(ingredient.id)">
-          {{ingredient.name}} <span>{{getRecipeIngredientQuantity(ingredient.id, recipe)}} {{ingredient.measure}}</span>
-        </li>
-      </ul>
-    </div>
+<div class="postsContainer">
+  <div class="post">
+    <h2 class="title">
+      FoodieLife Demo Page
+    </h2>
+    <p class="content">
+      This page is oriented to show the interface and functionalities of an application to manage the recipes and
+      meals for each day of the week. It's build using <strong>Angular, NodeJS and TypeScript.</strong>
+    </p>
   </div>
-
+  <div class="post">
+    <h2 class="title">
+      Update: Ingredients functionality implemented
+    </h2>
+    <p class="content">
+      The ingredients functionality has been added. It lets you add, edit and delete ingredients.<br>
+      Each ingredient has a price assigned to it that in not yet ready to implement, and it will be used in future
+      functionalities.
+    </p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Recipes functionality implemented
+    </h2>
+    <p class="content">
+      The recipes functionality has been added. It lets you add, edit and delete recipes.
+    </p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Ingredients and recipes styling
+    </h2>
+    <p class="content">
+      I added a styling for the app, that easies the interaction with it. Its only thought for Desktop users<br>
+      It will be changed throughout the development of the app to improve the responsiveness and layout.</p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Recipe ingredient update
+    </h2>
+    <p class="content">
+      In the recipe edit view has been updated with a set of two tables to choose the desired ingredients and quantity
+      of them for the recipe.<br>
+      The top table is the one that shows the current recipe's ingredients and the one at the bottom the ones that can
+      be added to the recipe.<br>
+      It is needed to take in to account that every ingredient that is already on the recipe it will not be shown on
+      the second table.</p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Ingredients search bar
+    </h2>
+    <p class="content">
+      All the ingredients view now have a search bar that lets look for them by name.<br>
+      This search bar can be seen at the ingredients view and the recipe edit view.</p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Ingredients/Recipe price implemented
+    </h2>
+    <p class="content">
+      All the ingredients view now have a price by measure unit.
+      This price can be edited on the "ingredient edit" view.<br>
+      Now on the all of the recipes view you can check the total price of the ingredients to make it,
+      and on the "detail" and "edit" view you can check the price of each ingredient.<br>
+      Following that on the "edit view" the total price updates itself every time you delete, add or update an
+      ingredient.</p>
+  </div>
+  <div class="post">
+    <h2 class="title">
+      Update: Interface overhaul
+    </h2>
+    <p class="content">
+      The interface has been redesign adding flex to manage the containers, and icons to the majority of the buttons.
+    </p>
+  </div>
 </div>

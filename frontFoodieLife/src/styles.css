@@ -26,6 +26,16 @@ div.mainContent{
   margin-right: 10%;
   margin-top: 1%;
 }
+div.mainContent h2{
+  font-size: 2rem;
+}
+div.mainContent h3 {
+  font-size: 1.5rem;
+}
+
+div.mainContent h4 {
+  font-size: 1.2rem;
+}
 /*Search Bar*/
 div.searchBar{
   display: flex;
@@ -34,6 +44,7 @@ div.searchBar{
 }
 div.searchBar input.bar{
   flex: 5;
+  border-radius: 1rem;
 }
 div.searchBar i{
   margin: 0rem 0.25rem;
