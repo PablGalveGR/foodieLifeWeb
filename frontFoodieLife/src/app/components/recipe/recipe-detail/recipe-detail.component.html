@@ -37,7 +37,7 @@
     <ol class="stepsList">
       <li *ngFor="let step of recipe.steps">
         <h4>{{step.title}}</h4>
-        <p class="stepBody">{{step.body}}</p>
+        <p class="stepBody" [innerHtml] ="step.body"></p>
       </li>
     </ol>
   </div>
@@ -100,7 +100,7 @@
     <div class="searchBar">
       <input class="bar" type="text" (keyup.enter)="filterBy(filter.value)" #filter>
       <i class="fas fa-search button" (click)="filterBy(filter.value)"></i>
-      <i class="fas fa-eraser button" (click)="clearFilter()"></i>
+      <i class="fas fa-eraser button" (click)="clearFilter(filter)"></i>
     </div>
 
     <table class="ingredients">
@@ -141,7 +141,8 @@
       <label for="steptitle">Tittle</label><br>
       <input type="text" name="stepTitle" [(ngModel)]=step.title><br>
       <label for="stepBody">Body</label><br>
-      <textarea name="stepBody" [(ngModel)]=step.body rows="7"></textarea>
+      <app-text-formatter [text] ="step.body" (editTextEvent) = "textFormatterUpdate(step.id, $event)"></app-text-formatter>
+    <!-- <textarea name="stepBody" [(ngModel)]=step.body rows="7"></textarea>-->
       <button (click)="deleteStep(step.id)">Delete</button>
     </div>
     <button (click)="addStepToRecipe()">Add step</button>

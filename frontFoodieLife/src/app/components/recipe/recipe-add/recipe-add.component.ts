@@ -5,6 +5,7 @@ import { RecipeService } from '../../../services/recipe/recipe.service';
 import { TypeService } from '../../../services/type/type.service';
 import { Ingredient } from '../../ingredient/Ingredient';
 import { IngredientQuantity } from '../IngredientQuantity';
+import { TextFormatterComponent } from '../../text-formatter/text-formatter.component';
 import { Recipe } from '../Recipe';
 import { Step } from '../Step';
 import { NgFor, NgIf } from '@angular/common';
@@ -15,7 +16,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-recipe-add',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink, FormsModule],
+  imports: [NgFor, NgIf, RouterLink, FormsModule,TextFormatterComponent],
   templateUrl: './recipe-add.component.html',
   styleUrl: './recipe-add.component.css'
 })
@@ -81,7 +82,7 @@ export class RecipeAddComponent {
     console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered));
 
   }
-  clearFilter() {//Cleans the table of the ingredients that are not added to the recipe
+  clearFilter(filter? : HTMLInputElement) {//Cleans the table of the ingredients that are not added to the recipe
     let allIngs: Ingredient[] = [];
     this.ingredientService.getIngredients().subscribe(ings => allIngs = ings);
     this.ingredientsFiltered = [];
@@ -89,6 +90,9 @@ export class RecipeAddComponent {
       if (!this.ingredientsRecipe.find(i => i.id == ing.id)) {
         this.ingredientsFiltered.push(ing);
       }
+    }
+    if(filter){
+      filter.value = "";
     }
   }
   addIngredientQuantity(id: number, quant: string) {/// Adds the quantity of the given ingredient when focusout of the HTML's input
@@ -108,6 +112,9 @@ export class RecipeAddComponent {
     this.clearFilter();
   }
   /*Steps Functions*/
+  textFormatterUpdate(step :number , text : string){
+    this.recipe.steps.find( s => s.id == step)!.body = text;
+  }
   addStepToRecipe() {
     let newStep: Step = {
       id: 0,

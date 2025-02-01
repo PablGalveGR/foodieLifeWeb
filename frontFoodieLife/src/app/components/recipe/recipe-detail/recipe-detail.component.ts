@@ -11,11 +11,12 @@ import { Step } from '../Step';
 import { FormsModule } from '@angular/forms';
 import { IngredientQuantity } from '../IngredientQuantity';
 import { Router } from '@angular/router';
+import { TextFormatterComponent } from '../../text-formatter/text-formatter.component';
 
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink, FormsModule],
+  imports: [NgFor, NgIf, RouterLink, FormsModule,TextFormatterComponent],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.css'
 })
@@ -130,7 +131,7 @@ export class RecipeDetailComponent {
     console.log("Filtered :" + JSON.stringify(this.ingredientsFiltered));
 
   }
-  clearFilter() {//Cleans the table of the ingredients that are not added to the recipe
+  clearFilter(filter? : HTMLInputElement) {//Cleans the table of the ingredients that are not added to the recipe
     let allIngs: Ingredient[] = [];
     this.ingredientService.getIngredients().subscribe(ings => allIngs = ings);
     this.ingredientsFiltered = [];
@@ -138,6 +139,9 @@ export class RecipeDetailComponent {
       if (!this.ingredientsRecipe.find(i => i.id == ing.id)) {
         this.ingredientsFiltered.push(ing);
       }
+    }
+    if(filter){
+      filter.value = "";
     }
   }
   addIngredientQuantity(id: number, quant: string) {/// Adds the quantity of the given ingredient when focusout of the HTML's input
@@ -158,6 +162,9 @@ export class RecipeDetailComponent {
     this.clearFilter();
   }
   /*Steps Functions*/
+  textFormatterUpdate(step :number , text : string){
+    this.recipeToEdit.steps.find( s => s.id == step)!.body = text;
+  }
   addStepToRecipe() {
     let newStep: Step = {
       id: 0,

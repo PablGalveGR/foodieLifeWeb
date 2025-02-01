@@ -1,4 +1,5 @@
-<p>text-formatter works!</p>
 <editor
     [init]="init"
+    [(ngModel)] = "text"
+    (onChange) = "editText()"
   />
