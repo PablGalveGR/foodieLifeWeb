@@ -37,7 +37,7 @@
     <ol class="stepsList">
       <li *ngFor="let step of recipe.steps">
         <h4>{{step.title}}</h4>
-        <p class="stepBody" [innerHtml] ="step.body"></p>
+        <p class="stepBody" [innerHtml] ="step.body | styleSanitizer"></p>
       </li>
     </ol>
   </div>

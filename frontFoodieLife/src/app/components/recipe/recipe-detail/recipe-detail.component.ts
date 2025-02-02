@@ -12,11 +12,19 @@ import { FormsModule } from '@angular/forms';
 import { IngredientQuantity } from '../IngredientQuantity';
 import { Router } from '@angular/router';
 import { TextFormatterComponent } from '../../text-formatter/text-formatter.component';
+import { StyleSanitizerPipe } from '../../../pipes/style-sanitizer.pipe';
 
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink, FormsModule,TextFormatterComponent],
+  imports: [
+    NgFor, 
+    NgIf, 
+    RouterLink, 
+    FormsModule,
+    TextFormatterComponent, 
+    StyleSanitizerPipe
+  ],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.css'
 })
