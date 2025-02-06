@@ -92,9 +92,9 @@ i.button:hover{
   cursor: pointer;
 }
 i#veggieIcon{
-  color: greenyellow;
+  color: rgb(151, 224, 41);
   background-color: var(--contentBackgroundColor);
-  border: dashed greenyellow 0.1rem;
+  border: dashed rgb(151, 224, 41) 0.1rem;
   border-radius: 2rem;
   padding: 0.5rem;
   font-size: 1.25rem;
@@ -129,4 +129,5 @@ textarea{
   border-radius: 0.25rem;
   border: solid 0.025rem var(--secondaryColor);
 }
+
 

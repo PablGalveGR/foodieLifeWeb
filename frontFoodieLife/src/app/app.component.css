@@ -32,3 +32,33 @@ nav ul li:hover{
 /*End Nav Styles*/
 /*Footer Styles*/
 /*End FooterStyles*/
+/*Mobile*/
+@media only screen and (max-width: 768px){
+  /*Nav Styles*/
+nav{
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+nav h1.title{
+  color: var(--secondaryColor);
+  font-size: 2rem;
+  padding-left: 1rem;
+  flex:2;
+}
+nav ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+nav ul li{
+  list-style: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color:white;
+}
+}

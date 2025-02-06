@@ -113,7 +113,7 @@ export class RecipeService {
   }
   recipePrice(id:number , recipe_?: Recipe){
     let total = 0;
-    let recipe = recipe_!;
+    let recipe = recipe_;
     if(recipe == undefined){///If recipe not passed by parameter, look for it with the id
       recipe = {
         id: 0,

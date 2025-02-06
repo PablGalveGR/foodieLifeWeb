@@ -1,10 +1,10 @@
 <div class="mainContent">
-  <h2>Add recipe</h2>
-  <label for="recipeName">Name:</label><br>
+  <h2 class="recipeName">Recipe: {{recipe.name}}</h2>
+  <h3>Name</h3><br>
   <input type="text" name="recipeName" [(ngModel)]="recipe.name"><br>
-  <label for="recipeDesc">Description</label><br>
-  <textarea name="recipeDesc" [(ngModel)]=recipe.description></textarea>
-  <!--Ingredients-->
+  <h3>Description</h3><br>
+  <textarea name="recipeDesc" rows="7" placeholder={{recipe.description}}
+    [(ngModel)]=recipe.description></textarea>
   <div class="ingredientsContainer" *ngIf="ingredientsRecipe != undefined">
     <h3 class="ingredientsTitle">Ingredients</h3>
     <table class="ingredients">
@@ -15,20 +15,32 @@
         <td>Vegan</td>
         <td>Price</td>
         <td>Quantity</td>
+        <td>Total</td>
         <td>Delete</td>
       </tr>
       <tr *ngFor=" let ingredient of ingredientsRecipe" class="ingredient">
         <td>{{ingredient.name}}</td>
         <td>{{getType(ingredient.type)}}</td>
-        <td>{{ingredient.vegetarian}}</td>
-        <td>{{ingredient.vegan}}</td>
+        <td>
+          <i class="fa-solid fa-check" *ngIf="ingredient.vegetarian" title="Vegan"></i>
+          <i class="fa-solid fa-xmark" *ngIf="!ingredient.vegetarian" title="Vegan"></i>
+        </td>
+        <td>
+          <i class="fa-solid fa-check" *ngIf="ingredient.vegan" title="Vegan"></i>
+          <i class="fa-solid fa-xmark" *ngIf="!ingredient.vegan" title="Vegan"></i>
+        </td>
         <td>{{ingredient.price}}</td>
         <td>
           <input type="number" value="{{getRecipeIngredientQuantity(ingredient.id)}}"
-            (onChange)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
+            (focusout)="addIngredientQuantity(ingredient.id,quant.value)" #quant>
           <span> {{ingredient.measure}}</span>
         </td>
+        <td>{{ingredient.price * getRecipeIngredientQuantity(ingredient.id)}}€</td>
         <td><i class="fa-solid fa-trash button" id="deleteIcon" (click)="deleteIngredient(ingredient.id)"></i></td>
+      </tr>
+      <tr id="header">
+        <td colspan="6">Total</td>
+        <td colspan="2"> {{recipe.price}}€</td>
       </tr>
     </table>
     <div class="searchBar">
@@ -36,6 +48,7 @@
       <i class="fas fa-search button" (click)="filterBy(filter.value)"></i>
       <i class="fas fa-eraser button" (click)="clearFilter(filter)"></i>
     </div>
+
     <table class="ingredients">
       <tr id="header">
         <td>Name</td>
@@ -47,25 +60,35 @@
       <tr *ngFor=" let ingredient of ingredientsFiltered" class="ingredient">
         <td>{{ingredient.name}}</td>
         <td>{{getType(ingredient.type)}}</td>
-        <td>{{ingredient.vegetarian}}</td>
-        <td>{{ingredient.vegan}}</td>
+        <td>
+          <i class="fa-solid fa-check" *ngIf="ingredient.vegetarian" title="Vegan"></i>
+          <i class="fa-solid fa-xmark" *ngIf="!ingredient.vegetarian" title="Vegan"></i>
+        </td>
+        <td>
+          <i class="fa-solid fa-check" *ngIf="ingredient.vegan" title="Vegan"></i>
+          <i class="fa-solid fa-xmark" *ngIf="!ingredient.vegan" title="Vegan"></i>
+        </td>
         <td><i class="fas fa-plus-square button" id="addIcon" (click)="addIngredient(ingredient.id)"></i></td>
       </tr>
     </table>
   </div>
   <!--Steps-->
   <div class="stepsContainer">
-    <h3>Steps</h3>
-    <div class="stepsContainer" *ngFor="let step of recipe.steps">
-      <label for="steptitle">Tittle</label><br>
-      <input type="text" name="stepTitle" [(ngModel)]=step.title><br>
-      <label for="stepBody">Body</label><br>
-      <app-text-formatter [text] ="step.body" (editTextEvent) = "textFormatterUpdate(step.id, $event)"></app-text-formatter>
-    <!-- <textarea name="stepBody" [(ngModel)]=step.body></textarea>-->
-      <button (click)="deleteStep(step.id)">Delete</button>
+    <h3 class="stepsTitle">Steps</h3>
+    <div class="stepContainer" *ngFor="let step of recipe.steps">
+      <h4>Tittle</h4>
+      <div class="stepHeader">
+        <input type="text" name="stepTitle" [(ngModel)]=step.title>
+        <i class="fa-solid fa-trash button" id="deleteIcon" (click)="deleteStep(step.id)"></i>
+      </div>
+      <h4>Body</h4>
+      <app-text-formatter [text]="step.body"
+        (editTextEvent)="textFormatterUpdate(step.id, $event)"></app-text-formatter>
     </div>
-    <button (click)="addStepToRecipe()">Add step</button>
+    <i class="fas fa-plus-square button" id="addIcon" (click)="addStepToRecipe()"></i>
   </div>
-  <button (click)="saveRecipe()">Save</button>
-  <button (click)="goBack()">Cancel</button>
+  <div class="bottomButtons">
+    <i class="far fa-save button" (click)="saveRecipe()"></i>
+    <i class="fas fa-window-close button" id=deleteIcon (click)="goBack()"></i>
+  </div>
 </div>

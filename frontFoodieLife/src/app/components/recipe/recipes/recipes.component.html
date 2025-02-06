@@ -1,7 +1,8 @@
 <div class="mainContent">
   <div class="header">
     <h2 class="ListTitle">Recipes</h2>
-    <button (click)=" changeView()">Change View</button>
+    <i *ngIf="boxView"  (click)="changeView()" class="fa-solid fa-rectangle-list button"></i>
+    <i *ngIf="!boxView" (click)="changeView()" class="fa-solid fa-table-cells button"></i>
     <i class="fas fa-plus-square button" id="addIcon" (click)=goToAdd()> Add</i>
 
   </div>

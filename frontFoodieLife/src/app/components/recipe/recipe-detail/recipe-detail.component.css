@@ -37,8 +37,20 @@ div.ingredientsContainer ul li:hover {
 }
 
 /*Steps*/
+div.stepsContainer{
+  margin-bottom: 2rem;
+  border-bottom: 0.15rem dashed var(--tableHightLightColor);
+  padding: 1rem;
+}
+
 div.stepsContainer h3.stepsTitle {
   border-top: 0.15rem dashed var(--tableHightLightColor);
+}
+div.stepContainer{
+  border: 0.25rem solid var(--tableHightLightColor);
+  padding: 0.25rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 p.stepBody {
@@ -47,6 +59,16 @@ p.stepBody {
 
 div.stepsContainer ol.stepsList {
   padding-left: 2rem;
+}
+div.stepHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+div.stepsContainer i#addIcon{
+  font-size: 1.5rem;
+  padding: 0.5rem 50%;
+  width: 100%;
 }
 /*ingredient Vegan icons*/
 div.ingredientsContainer i#veggieIcon,
@@ -61,4 +83,13 @@ div.ingredientsContainer i#veganIcon {
 table.ingredients td {
   padding: 0.5rem;
   border: none;
+}
+/*Bottom Buttons*/
+.bottomButtons{
+  display: flex;
+  justify-content: space-around;
+}
+.bottomButtons i{
+  padding: 1rem 3rem ;
+  font-size: 3rem;
 }
