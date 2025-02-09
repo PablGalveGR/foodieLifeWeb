@@ -73,3 +73,13 @@ div.bottom p.price {
   font-weight: bolder;
   font-size: 1.2rem;
 }
+/*Mobile*/
+@media only screen and (max-width: 1020px){
+  div.boxView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
