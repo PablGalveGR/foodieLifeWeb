@@ -85,8 +85,11 @@ nav.desktop ul li:hover {
   div.sideMenu{
     margin-left: 0.5rem;
   }
-  ul.right {
+   nav.mobile ul.right {
     right: 0;
+  }
+  nav.mobile ul.left{
+    left: 0;
   }
 
   nav.mobile ul li:hover {

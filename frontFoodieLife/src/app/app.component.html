@@ -11,7 +11,7 @@
 <nav class="mobile" *ngIf = "!desktop">
   <div class="sideMenu">
     <i class="fa-solid fa-bars button" (click)="showHide()"></i>
-    <ul *ngIf="!hide">
+    <ul class="left" *ngIf="!hide">
       <li (click)="goTo('')">Home</li>
       <li (click)="goTo('/recipes')">Recipes</li>
       <li (click)="goTo('/ingredients')">Ingredients</li>
